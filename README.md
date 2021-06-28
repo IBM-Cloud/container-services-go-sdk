@@ -1,1 +1,1 @@
-# armada-services-go-sdk
+# container-services-go-sdk
