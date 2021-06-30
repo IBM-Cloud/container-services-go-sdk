@@ -13944,12 +13944,12 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) GetWorkerPoolWithContext(ctx
 }
 
 // GetWorkerPools1 : List the worker pools in a cluster
-func (kubernetesServiceApi *KubernetesServiceApiV1) GetWorkerPools1(getWorkerPools1Options *GetWorkerPools1Options) (result *GetWorkerPoolResponse, response *core.DetailedResponse, err error) {
+func (kubernetesServiceApi *KubernetesServiceApiV1) GetWorkerPools1(getWorkerPools1Options *GetWorkerPools1Options) (result []GetWorkerPoolResponse, response *core.DetailedResponse, err error) {
 	return kubernetesServiceApi.GetWorkerPools1WithContext(context.Background(), getWorkerPools1Options)
 }
 
 // GetWorkerPools1WithContext is an alternate form of the GetWorkerPools1 method which supports a Context parameter
-func (kubernetesServiceApi *KubernetesServiceApiV1) GetWorkerPools1WithContext(ctx context.Context, getWorkerPools1Options *GetWorkerPools1Options) (result *GetWorkerPoolResponse, response *core.DetailedResponse, err error) {
+func (kubernetesServiceApi *KubernetesServiceApiV1) GetWorkerPools1WithContext(ctx context.Context, getWorkerPools1Options *GetWorkerPools1Options) (result []GetWorkerPoolResponse, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(getWorkerPools1Options, "getWorkerPools1Options cannot be nil")
 	if err != nil {
 		return
@@ -13990,7 +13990,7 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) GetWorkerPools1WithContext(c
 		return
 	}
 
-	var rawResponse map[string]json.RawMessage
+	var rawResponse []json.RawMessage
 	response, err = kubernetesServiceApi.Service.Request(request, &rawResponse)
 	if err != nil {
 		return
