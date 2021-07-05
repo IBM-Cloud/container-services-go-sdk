@@ -1,7 +1,10 @@
-# IBM Cloud Container Services Go SDK Version 1.0
+# IBM Cloud Container Services Go SDK Version 1.0 
 
-Go client library to interact with various
-[IBM Cloud Kubernetes Service APIs](https://cloud.ibm.com/apidocs/kubernetes).
+Go client library for [IBM Cloud Kubernetes service](https://cloud.ibm.com/apidocs/kubernetes) and Satellite services.
+
+**NOTE:**
+
+The [IBM Cloud Provider for Terraform](https://github.com/IBM-Cloud/terraform-provider-ibm) uses this client library, alongside the [bluemix-go](https://github.com/IBM-Cloud/bluemix-go) SDK.  No additional support is provided for this SDK.
 
 ## Table of Contents
 <!--
@@ -33,10 +36,6 @@ Service Name | Package name
 --- | --- 
 [Kubernetes](https://cloud.ibm.com/apidocs/kubernetes) | kubernetesserviceapiv1
 [Satellite Link](https://cloud.ibm.com/docs/satellite?topic=satellite-link-location-cloud) | satellitelinkv1
-
-**NOTE:**
-
-IBM Cloud Container Services Go SDK is to support only teraform provider resources.
 
 ## Prerequisites
 
