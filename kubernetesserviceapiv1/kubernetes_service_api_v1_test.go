@@ -25153,6 +25153,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 
 				// Construct an instance of the CreateSatelliteLocationOptions model
 				createSatelliteLocationOptionsModel := new(kubernetesserviceapiv1.CreateSatelliteLocationOptions)
+				createSatelliteLocationOptionsModel.CoreosEnabled = true
 				createSatelliteLocationOptionsModel.CosConfig = cosBucketModel
 				createSatelliteLocationOptionsModel.CosCredentials = cosAuthorizationModel
 				createSatelliteLocationOptionsModel.Description = core.StringPtr("testString")
@@ -25252,6 +25253,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 
 				// Construct an instance of the CreateSatelliteLocationOptions model
 				createSatelliteLocationOptionsModel := new(kubernetesserviceapiv1.CreateSatelliteLocationOptions)
+				createSatelliteLocationOptionsModel.CoreosEnabled = true
 				createSatelliteLocationOptionsModel.CosConfig = cosBucketModel
 				createSatelliteLocationOptionsModel.CosCredentials = cosAuthorizationModel
 				createSatelliteLocationOptionsModel.Description = core.StringPtr("testString")
@@ -25358,6 +25360,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 
 				// Construct an instance of the CreateSatelliteLocationOptions model
 				createSatelliteLocationOptionsModel := new(kubernetesserviceapiv1.CreateSatelliteLocationOptions)
+				createSatelliteLocationOptionsModel.CoreosEnabled = true
 				createSatelliteLocationOptionsModel.CosConfig = cosBucketModel
 				createSatelliteLocationOptionsModel.CosCredentials = cosAuthorizationModel
 				createSatelliteLocationOptionsModel.Description = core.StringPtr("testString")
@@ -25407,6 +25410,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 
 				// Construct an instance of the CreateSatelliteLocationOptions model
 				createSatelliteLocationOptionsModel := new(kubernetesserviceapiv1.CreateSatelliteLocationOptions)
+				createSatelliteLocationOptionsModel.CoreosEnabled = true
 				createSatelliteLocationOptionsModel.CosConfig = cosBucketModel
 				createSatelliteLocationOptionsModel.CosCredentials = cosAuthorizationModel
 				createSatelliteLocationOptionsModel.Description = core.StringPtr("testString")
@@ -41147,6 +41151,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 
 				// Construct an instance of the CreateSatelliteLocationOptions model
 				createSatelliteLocationOptionsModel := kubernetesServiceApiService.NewCreateSatelliteLocationOptions()
+				createSatelliteLocationOptionsModel.SetCoreosEnabled(true)
 				createSatelliteLocationOptionsModel.SetCosConfig(cosBucketModel)
 				createSatelliteLocationOptionsModel.SetCosCredentials(cosAuthorizationModel)
 				createSatelliteLocationOptionsModel.SetDescription("testString")
@@ -41158,6 +41163,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				createSatelliteLocationOptionsModel.SetXAuthResourceGroup("testString")
 				createSatelliteLocationOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createSatelliteLocationOptionsModel).ToNot(BeNil())
+				Expect(createSatelliteLocationOptionsModel.CosConfig).To(Equal(true))
 				Expect(createSatelliteLocationOptionsModel.CosConfig).To(Equal(cosBucketModel))
 				Expect(createSatelliteLocationOptionsModel.CosCredentials).To(Equal(cosAuthorizationModel))
 				Expect(createSatelliteLocationOptionsModel.Description).To(Equal(core.StringPtr("testString")))
