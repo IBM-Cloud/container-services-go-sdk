@@ -28220,6 +28220,9 @@ type MultishiftGetController struct {
 	// CommonClusterCACertRotation CA cert rotation properties.
 	CaCertRotationStatus *CommonClusterCACertRotation `json:"caCertRotationStatus,omitempty"`
 
+	// CoreosEnabled Optional: Enable Red Hat CoreOS features within the Satellite location.
+	CoreosEnabled *bool `json:"coreos_enabled,omitempty"`
+
 	// COSBucket Optional: IBM Cloud Object Storage bucket configuration details.
 	CosConfig *COSBucket `json:"cos_config,omitempty"`
 
