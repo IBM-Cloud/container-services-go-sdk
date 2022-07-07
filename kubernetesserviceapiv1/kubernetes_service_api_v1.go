@@ -16914,6 +16914,9 @@ type AttachSatelliteHostOptions struct {
 	// Key-value pairs to label the host, such as cpu=4 to describe the host capabilities.
 	Labels map[string]string
 
+	//The operating system of the hosts to attach to the location. Options are RHEL or RHCOS
+	OperatingSystem *string
+
 	// The ID of the resource group that the Satellite location is in. To list the resource group ID of the location, use
 	// the `GET /v2/satellite/getController` API method.
 	XAuthResourceGroup *string
@@ -16936,6 +16939,12 @@ func (options *AttachSatelliteHostOptions) SetController(controller string) *Att
 // SetLabels : Allow user to set Labels
 func (options *AttachSatelliteHostOptions) SetLabels(labels map[string]string) *AttachSatelliteHostOptions {
 	options.Labels = labels
+	return options
+}
+
+// SetOperatingSystem : Allow user to set OperatingSystem
+func (options *AttachSatelliteHostOptions) SetOperatingSystem(operatingSystem string) *AttachSatelliteHostOptions {
+	options.OperatingSystem = core.StringPtr(operatingSystem)
 	return options
 }
 
