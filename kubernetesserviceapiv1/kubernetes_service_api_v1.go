@@ -10078,7 +10078,7 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateSatelliteAssignmentWit
 }
 
 // AttachSatelliteHost : Attach a host to an IBM Cloud Satellite location
-// Create a script to run on a Red Hat Enterprise Linux 7 host in your on-premises infrastructure. The script attaches
+// Create a script to run on a Red Hat Enterprise Linux 7 or RHCOS (CoreOS) host in your on-premises infrastructure. The script attaches
 // the host to your IBM Cloud Satellite location. The host must have access to the public network in order for the
 // script to complete.
 func (kubernetesServiceApi *KubernetesServiceApiV1) AttachSatelliteHost(attachSatelliteHostOptions *AttachSatelliteHostOptions) (response []byte, err error) {
@@ -10123,6 +10123,9 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) AttachSatelliteHostWithConte
 	}
 	if attachSatelliteHostOptions.Labels != nil {
 		body["labels"] = attachSatelliteHostOptions.Labels
+	}
+	if attachSatelliteHostOptions.OperatingSystem != nil {
+		body["operatingSystem"] = attachSatelliteHostOptions.OperatingSystem
 	}
 	_, err = builder.SetBodyContentJSON(body)
 	if err != nil {
