@@ -24583,6 +24583,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				attachSatelliteHostOptionsModel.Labels = make(map[string]string)
 				attachSatelliteHostOptionsModel.XAuthResourceGroup = core.StringPtr("testString")
 				attachSatelliteHostOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				attachSatelliteHostOptionsModel.OperatingSystem = core.StringPtr("RHCOS")
 
 				// Invoke operation with valid options model (positive test)
 				response, operationErr = kubernetesServiceApiService.AttachSatelliteHost(attachSatelliteHostOptionsModel)
@@ -24603,6 +24604,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				attachSatelliteHostOptionsModel.Labels = make(map[string]string)
 				attachSatelliteHostOptionsModel.XAuthResourceGroup = core.StringPtr("testString")
 				attachSatelliteHostOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				attachSatelliteHostOptionsModel.OperatingSystem = core.StringPtr("RHCOS")
 				// Invoke operation with empty URL (negative test)
 				err := kubernetesServiceApiService.SetServiceURL("")
 				Expect(err).To(BeNil())
@@ -40527,11 +40529,13 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				attachSatelliteHostOptionsModel.SetLabels(make(map[string]string))
 				attachSatelliteHostOptionsModel.SetXAuthResourceGroup("testString")
 				attachSatelliteHostOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				attachSatelliteHostOptionsModel.SetOperatingSystem("RHCOS")
 				Expect(attachSatelliteHostOptionsModel).ToNot(BeNil())
 				Expect(attachSatelliteHostOptionsModel.Controller).To(Equal(core.StringPtr("testString")))
 				Expect(attachSatelliteHostOptionsModel.Labels).To(Equal(make(map[string]string)))
 				Expect(attachSatelliteHostOptionsModel.XAuthResourceGroup).To(Equal(core.StringPtr("testString")))
 				Expect(attachSatelliteHostOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+				Expect(attachSatelliteHostOptionsModel.OperatingSystem).To(Equal(core.StringPtr("RHCOS")))
 			})
 			It(`Invoke NewAutoUpdateMasterOptions successfully`, func() {
 				// Construct an instance of the AutoUpdateMasterOptions model
