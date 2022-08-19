@@ -9739,6 +9739,9 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateSatelliteClusterWithCo
 	if createSatelliteClusterOptions.Name != nil {
 		body["name"] = createSatelliteClusterOptions.Name
 	}
+	if createSatelliteClusterOptions.OperatingSystem != nil {
+		body["operatingSystem"] = createSatelliteClusterOptions.OperatingSystem
+	}
 	if createSatelliteClusterOptions.PodSubnet != nil {
 		body["podSubnet"] = createSatelliteClusterOptions.PodSubnet
 	}
@@ -9847,6 +9850,9 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateSatelliteWorkerPoolWit
 	}
 	if createSatelliteWorkerPoolOptions.Name != nil {
 		body["name"] = createSatelliteWorkerPoolOptions.Name
+	}
+	if createSatelliteWorkerPoolOptions.OperatingSystem != nil {
+		body["operatingSystem"] = createSatelliteWorkerPoolOptions.OperatingSystem
 	}
 	if createSatelliteWorkerPoolOptions.WorkerCount != nil {
 		body["workerCount"] = createSatelliteWorkerPoolOptions.WorkerCount
@@ -10655,6 +10661,9 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateSatelliteClusterRemote
 	}
 	if createSatelliteClusterRemoteOptions.Name != nil {
 		body["name"] = createSatelliteClusterRemoteOptions.Name
+	}
+	if createSatelliteClusterRemoteOptions.OperatingSystem != nil {
+		body["operatingSystem"] = createSatelliteClusterRemoteOptions.OperatingSystem
 	}
 	if createSatelliteClusterRemoteOptions.PodSubnet != nil {
 		body["podSubnet"] = createSatelliteClusterRemoteOptions.PodSubnet
