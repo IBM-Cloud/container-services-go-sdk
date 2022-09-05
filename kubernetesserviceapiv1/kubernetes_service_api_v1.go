@@ -9739,6 +9739,9 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateSatelliteClusterWithCo
 	if createSatelliteClusterOptions.Name != nil {
 		body["name"] = createSatelliteClusterOptions.Name
 	}
+	if createSatelliteClusterOptions.OperatingSystem != nil {
+		body["operatingSystem"] = createSatelliteClusterOptions.OperatingSystem
+	}
 	if createSatelliteClusterOptions.PodSubnet != nil {
 		body["podSubnet"] = createSatelliteClusterOptions.PodSubnet
 	}
@@ -9847,6 +9850,9 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateSatelliteWorkerPoolWit
 	}
 	if createSatelliteWorkerPoolOptions.Name != nil {
 		body["name"] = createSatelliteWorkerPoolOptions.Name
+	}
+	if createSatelliteWorkerPoolOptions.OperatingSystem != nil {
+		body["operatingSystem"] = createSatelliteWorkerPoolOptions.OperatingSystem
 	}
 	if createSatelliteWorkerPoolOptions.WorkerCount != nil {
 		body["workerCount"] = createSatelliteWorkerPoolOptions.WorkerCount
@@ -10655,6 +10661,9 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateSatelliteClusterRemote
 	}
 	if createSatelliteClusterRemoteOptions.Name != nil {
 		body["name"] = createSatelliteClusterRemoteOptions.Name
+	}
+	if createSatelliteClusterRemoteOptions.OperatingSystem != nil {
+		body["operatingSystem"] = createSatelliteClusterRemoteOptions.OperatingSystem
 	}
 	if createSatelliteClusterRemoteOptions.PodSubnet != nil {
 		body["podSubnet"] = createSatelliteClusterRemoteOptions.PodSubnet
@@ -16920,7 +16929,7 @@ type AttachSatelliteHostOptions struct {
 	// Key-value pairs to label the host, such as cpu=4 to describe the host capabilities.
 	Labels map[string]string
 
-	//The operating system of the hosts to attach to the location. Options are RHEL or RHCOS
+	//Optional: The operating system of the hosts to attach to the location. Options are RHEL or RHCOS
 	OperatingSystem *string
 
 	// The ID of the resource group that the Satellite location is in. To list the resource group ID of the location, use
@@ -20112,6 +20121,9 @@ type CreateSatelliteClusterOptions struct {
 	// The unique name for the new IBM Cloud Satellite cluster.
 	Name *string
 
+	//Optional: The operating system of the hosts to add to the cluster. Options are RHEL7, RHEL8, or RHCOS.
+	OperatingSystem *string
+
 	// Optional: User provided value for the pod subnet.
 	PodSubnet *string
 
@@ -20167,6 +20179,12 @@ func (options *CreateSatelliteClusterOptions) SetLabels(labels map[string]string
 // SetName : Allow user to set Name
 func (options *CreateSatelliteClusterOptions) SetName(name string) *CreateSatelliteClusterOptions {
 	options.Name = core.StringPtr(name)
+	return options
+}
+
+// SetOperatingSystem : Allow user to set OperatingSystem
+func (options *CreateSatelliteClusterOptions) SetOperatingSystem(operatingSystem string) *CreateSatelliteClusterOptions {
+	options.OperatingSystem = core.StringPtr(operatingSystem)
 	return options
 }
 
@@ -20235,6 +20253,9 @@ type CreateSatelliteClusterRemoteOptions struct {
 	// The unique name for the new IBM Cloud Satellite cluster.
 	Name *string
 
+	//Optional: The operating system of the hosts to add to the cluster. Options are RHEL7, RHEL8, or RHCOS.
+	OperatingSystem *string
+
 	// Optional: User provided value for the pod subnet.
 	PodSubnet *string
 
@@ -20298,6 +20319,12 @@ func (options *CreateSatelliteClusterRemoteOptions) SetLabels(labels map[string]
 // SetName : Allow user to set Name
 func (options *CreateSatelliteClusterRemoteOptions) SetName(name string) *CreateSatelliteClusterRemoteOptions {
 	options.Name = core.StringPtr(name)
+	return options
+}
+
+// SetOperatingSystem : Allow user to set OperatingSystem
+func (options *CreateSatelliteClusterRemoteOptions) SetOperatingSystem(operatingSystem string) *CreateSatelliteClusterRemoteOptions {
+	options.OperatingSystem = core.StringPtr(operatingSystem)
 	return options
 }
 
@@ -20471,6 +20498,9 @@ type CreateSatelliteWorkerPoolOptions struct {
 
 	Name *string
 
+	//Optional: The operating system of the hosts in the worker pool. Options are RHEL7, RHEL8, or RHCOS.
+	OperatingSystem *string
+
 	WorkerCount *int64
 
 	// The ID of the resource group that the Satellite location is in. To list the resource group ID of the location, use
@@ -20537,6 +20567,12 @@ func (options *CreateSatelliteWorkerPoolOptions) SetLabels(labels map[string]str
 // SetName : Allow user to set Name
 func (options *CreateSatelliteWorkerPoolOptions) SetName(name string) *CreateSatelliteWorkerPoolOptions {
 	options.Name = core.StringPtr(name)
+	return options
+}
+
+// SetOperatingSystem : Allow user to set OperatingSystem
+func (options *CreateSatelliteWorkerPoolOptions) SetOperatingSystem(operatingSystem string) *CreateSatelliteWorkerPoolOptions {
+	options.OperatingSystem = core.StringPtr(operatingSystem)
 	return options
 }
 
