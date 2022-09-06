@@ -26017,6 +26017,8 @@ type GetWorkerPoolResponse struct {
 
 	OpenshiftLicense *string `json:"openshiftLicense,omitempty"`
 
+	OperatingSystem *string `json:"operatingSystem,omitempty"`
+
 	PoolName *string `json:"poolName,omitempty"`
 
 	Provider *string `json:"provider,omitempty"`
@@ -26068,6 +26070,10 @@ func UnmarshalGetWorkerPoolResponse(m map[string]json.RawMessage, result interfa
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "openshiftLicense", &obj.OpenshiftLicense)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "operatingSystem", &obj.OperatingSystem)
 	if err != nil {
 		return
 	}
