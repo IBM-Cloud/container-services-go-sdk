@@ -23538,6 +23538,8 @@ type GetClusterResponse struct {
 
 	Name *string `json:"name,omitempty"`
 
+	InfrastructureTopology *string `json:"infrastructureTopology,omitempty"`
+
 	PodSubnet *string `json:"podSubnet,omitempty"`
 
 	Provider *string `json:"provider,omitempty"`
@@ -23636,6 +23638,10 @@ func UnmarshalGetClusterResponse(m map[string]json.RawMessage, result interface{
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "location", &obj.Location)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "infrastructureTopology", &obj.InfrastructureTopology)
 	if err != nil {
 		return
 	}
