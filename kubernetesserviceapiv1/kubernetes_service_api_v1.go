@@ -2003,18 +2003,21 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) GetLBConfigWithContext(ctx c
 // to all load balancers that expose ALBs in the cluster.
 //
 // Available features:
-//   + `proxyProtocol`:
-//     + Limitations:
-//       + This feature is supported only for VPC Gen 2 clusters that run Kubernetes version 1.18 or later.
-//       + This feature is cluster-level, therefore `type` field of the request must be empty.
-//     + Configuration:
-//       + `enable`: Set to `true` to enable or `false` to disable the PROXY protocol for the ALB load balancers. The
+//   - `proxyProtocol`:
+//   - Limitations:
+//   - This feature is supported only for VPC Gen 2 clusters that run Kubernetes version 1.18 or later.
+//   - This feature is cluster-level, therefore `type` field of the request must be empty.
+//   - Configuration:
+//   - `enable`: Set to `true` to enable or `false` to disable the PROXY protocol for the ALB load balancers. The
+//
 // PROXY protocol enables load balancers to pass client connection information that is contained in headers on the
 // client request, including the client IP address, the proxy server IP address, and both port numbers, to ALBs.
-//       + `headerTimeout`: The timeout value, in seconds, for the load balancer to receive the PROXY protocol headers
+//   - `headerTimeout`: The timeout value, in seconds, for the load balancer to receive the PROXY protocol headers
+//
 // that contain the client connection information. This option has effect only on ALBs running the Kubernetes Ingress
 // image. Default: `5`
-//       + `cidr`: Load balancer CIDRs from which ALBs process information in PROXY protocol headers. If requests that
+//   - `cidr`: Load balancer CIDRs from which ALBs process information in PROXY protocol headers. If requests that
+//
 // contain PROXY headers originate from load balancers in other IP ranges, the information in the headers is not process
 // by the ALB. This option has effect only on ALBs running the Kubernetes Ingress image. Default: `0.0.0.0/0`.
 func (kubernetesServiceApi *KubernetesServiceApiV1) PatchLBConfig(patchLBConfigOptions *PatchLBConfigOptions) (response *core.DetailedResponse, err error) {
@@ -9756,6 +9759,9 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateSatelliteClusterWithCo
 	}
 	if createSatelliteClusterOptions.Zone != nil {
 		body["zone"] = createSatelliteClusterOptions.Zone
+	}
+	if createSatelliteClusterOptions.InfrastructureTopology != nil {
+		body["infrastructureTopology"] = createSatelliteClusterOptions.InfrastructureTopology
 	}
 	_, err = builder.SetBodyContentJSON(body)
 	if err != nil {
@@ -20145,6 +20151,9 @@ type CreateSatelliteClusterOptions struct {
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
+
+	// User provided value for single node option.
+	InfrastructureTopology *string
 }
 
 // NewCreateSatelliteClusterOptions : Instantiate CreateSatelliteClusterOptions
@@ -20185,6 +20194,12 @@ func (options *CreateSatelliteClusterOptions) SetName(name string) *CreateSatell
 // SetOperatingSystem : Allow user to set OperatingSystem
 func (options *CreateSatelliteClusterOptions) SetOperatingSystem(operatingSystem string) *CreateSatelliteClusterOptions {
 	options.OperatingSystem = core.StringPtr(operatingSystem)
+	return options
+}
+
+// SetInfrastructureTopology : Allow user to set InfrastructureTopology
+func (options *CreateSatelliteClusterOptions) SetInfrastructureTopology(infrastructureTopology string) *CreateSatelliteClusterOptions {
+	options.InfrastructureTopology = core.StringPtr(infrastructureTopology)
 	return options
 }
 
@@ -23523,6 +23538,8 @@ type GetClusterResponse struct {
 
 	Name *string `json:"name,omitempty"`
 
+	InfrastructureTopology *string `json:"infrastructureTopology,omitempty"`
+
 	PodSubnet *string `json:"podSubnet,omitempty"`
 
 	Provider *string `json:"provider,omitempty"`
@@ -23621,6 +23638,10 @@ func UnmarshalGetClusterResponse(m map[string]json.RawMessage, result interface{
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "location", &obj.Location)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "infrastructureTopology", &obj.InfrastructureTopology)
 	if err != nil {
 		return
 	}
