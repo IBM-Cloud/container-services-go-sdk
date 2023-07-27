@@ -27959,7 +27959,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 		})
 	})
 	Describe(`CreateStorageConfiguration(createStorageConfigurationOptions *CreateStorageConfigurationOptions) - Operation response error`, func() {
-		createStorageConfigurationPath := "/v2/storage/satellite/createStorageConfiguration"
+		createStorageConfigurationPath := "/v2/storage/satellite/createStorageConfigurationByController"
 		Context(`Using mock server endpoint`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -27985,7 +27985,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				createStorageConfigurationOptionsModel := new(kubernetesserviceapiv1.CreateStorageConfigurationOptions)
 				createStorageConfigurationOptionsModel.ConfigName = core.StringPtr("testString")
 				createStorageConfigurationOptionsModel.ConfigVersion = core.StringPtr("testString")
-				createStorageConfigurationOptionsModel.Location = core.StringPtr("testString")
+				createStorageConfigurationOptionsModel.Controller = core.StringPtr("testString")
 				createStorageConfigurationOptionsModel.SourceBranch = core.StringPtr("testString")
 				createStorageConfigurationOptionsModel.SourceOrg = core.StringPtr("testString")
 				createStorageConfigurationOptionsModel.StorageClassParameters = []map[string]string{make(map[string]string)}
@@ -28015,7 +28015,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 	})
 
 	Describe(`CreateStorageConfiguration(createStorageConfigurationOptions *CreateStorageConfigurationOptions)`, func() {
-		createStorageConfigurationPath := "/v2/storage/satellite/createStorageConfiguration"
+		createStorageConfigurationPath := "/v2/storage/satellite/createStorageConfigurationByController"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -28063,7 +28063,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				createStorageConfigurationOptionsModel := new(kubernetesserviceapiv1.CreateStorageConfigurationOptions)
 				createStorageConfigurationOptionsModel.ConfigName = core.StringPtr("testString")
 				createStorageConfigurationOptionsModel.ConfigVersion = core.StringPtr("testString")
-				createStorageConfigurationOptionsModel.Location = core.StringPtr("testString")
+				createStorageConfigurationOptionsModel.Controller = core.StringPtr("testString")
 				createStorageConfigurationOptionsModel.SourceBranch = core.StringPtr("testString")
 				createStorageConfigurationOptionsModel.SourceOrg = core.StringPtr("testString")
 				createStorageConfigurationOptionsModel.StorageClassParameters = []map[string]string{make(map[string]string)}
@@ -28148,7 +28148,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				createStorageConfigurationOptionsModel := new(kubernetesserviceapiv1.CreateStorageConfigurationOptions)
 				createStorageConfigurationOptionsModel.ConfigName = core.StringPtr("testString")
 				createStorageConfigurationOptionsModel.ConfigVersion = core.StringPtr("testString")
-				createStorageConfigurationOptionsModel.Location = core.StringPtr("testString")
+				createStorageConfigurationOptionsModel.Controller = core.StringPtr("testString")
 				createStorageConfigurationOptionsModel.SourceBranch = core.StringPtr("testString")
 				createStorageConfigurationOptionsModel.SourceOrg = core.StringPtr("testString")
 				createStorageConfigurationOptionsModel.StorageClassParameters = []map[string]string{make(map[string]string)}
@@ -28178,7 +28178,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				createStorageConfigurationOptionsModel := new(kubernetesserviceapiv1.CreateStorageConfigurationOptions)
 				createStorageConfigurationOptionsModel.ConfigName = core.StringPtr("testString")
 				createStorageConfigurationOptionsModel.ConfigVersion = core.StringPtr("testString")
-				createStorageConfigurationOptionsModel.Location = core.StringPtr("testString")
+				createStorageConfigurationOptionsModel.Controller = core.StringPtr("testString")
 				createStorageConfigurationOptionsModel.SourceBranch = core.StringPtr("testString")
 				createStorageConfigurationOptionsModel.SourceOrg = core.StringPtr("testString")
 				createStorageConfigurationOptionsModel.StorageClassParameters = []map[string]string{make(map[string]string)}
@@ -30779,7 +30779,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 		})
 	})
 	Describe(`UpdateStorageConfiguration(updateStorageConfigurationOptions *UpdateStorageConfigurationOptions) - Operation response error`, func() {
-		updateStorageConfigurationPath := "/v2/storage/satellite/updateStorageConfiguration"
+		updateStorageConfigurationPath := "/v2/storage/satellite/updateStorageConfigurationByController"
 		Context(`Using mock server endpoint`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -30805,7 +30805,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				updateStorageConfigurationOptionsModel := new(kubernetesserviceapiv1.UpdateStorageConfigurationOptions)
 				updateStorageConfigurationOptionsModel.ConfigName = core.StringPtr("testString")
 				updateStorageConfigurationOptionsModel.ConfigVersion = core.StringPtr("testString")
-				updateStorageConfigurationOptionsModel.Location = core.StringPtr("testString")
+				updateStorageConfigurationOptionsModel.Controller = core.StringPtr("testString")
 				updateStorageConfigurationOptionsModel.SourceBranch = core.StringPtr("testString")
 				updateStorageConfigurationOptionsModel.SourceOrg = core.StringPtr("testString")
 				updateStorageConfigurationOptionsModel.StorageClassParameters = []map[string]string{make(map[string]string)}
@@ -30835,7 +30835,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 	})
 
 	Describe(`UpdateStorageConfiguration(updateStorageConfigurationOptions *UpdateStorageConfigurationOptions)`, func() {
-		updateStorageConfigurationPath := "/v2/storage/satellite/updateStorageConfiguration"
+		updateStorageConfigurationPath := "/v2/storage/satellite/updateStorageConfigurationByController"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -30883,7 +30883,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				updateStorageConfigurationOptionsModel := new(kubernetesserviceapiv1.UpdateStorageConfigurationOptions)
 				updateStorageConfigurationOptionsModel.ConfigName = core.StringPtr("testString")
 				updateStorageConfigurationOptionsModel.ConfigVersion = core.StringPtr("testString")
-				updateStorageConfigurationOptionsModel.Location = core.StringPtr("testString")
+				updateStorageConfigurationOptionsModel.Controller = core.StringPtr("testString")
 				updateStorageConfigurationOptionsModel.SourceBranch = core.StringPtr("testString")
 				updateStorageConfigurationOptionsModel.SourceOrg = core.StringPtr("testString")
 				updateStorageConfigurationOptionsModel.StorageClassParameters = []map[string]string{make(map[string]string)}
@@ -30968,7 +30968,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				updateStorageConfigurationOptionsModel := new(kubernetesserviceapiv1.UpdateStorageConfigurationOptions)
 				updateStorageConfigurationOptionsModel.ConfigName = core.StringPtr("testString")
 				updateStorageConfigurationOptionsModel.ConfigVersion = core.StringPtr("testString")
-				updateStorageConfigurationOptionsModel.Location = core.StringPtr("testString")
+				updateStorageConfigurationOptionsModel.Controller = core.StringPtr("testString")
 				updateStorageConfigurationOptionsModel.SourceBranch = core.StringPtr("testString")
 				updateStorageConfigurationOptionsModel.SourceOrg = core.StringPtr("testString")
 				updateStorageConfigurationOptionsModel.StorageClassParameters = []map[string]string{make(map[string]string)}
@@ -30998,7 +30998,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				updateStorageConfigurationOptionsModel := new(kubernetesserviceapiv1.UpdateStorageConfigurationOptions)
 				updateStorageConfigurationOptionsModel.ConfigName = core.StringPtr("testString")
 				updateStorageConfigurationOptionsModel.ConfigVersion = core.StringPtr("testString")
-				updateStorageConfigurationOptionsModel.Location = core.StringPtr("testString")
+				updateStorageConfigurationOptionsModel.Controller = core.StringPtr("testString")
 				updateStorageConfigurationOptionsModel.SourceBranch = core.StringPtr("testString")
 				updateStorageConfigurationOptionsModel.SourceOrg = core.StringPtr("testString")
 				updateStorageConfigurationOptionsModel.StorageClassParameters = []map[string]string{make(map[string]string)}
@@ -41269,7 +41269,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				createStorageConfigurationOptionsModel := kubernetesServiceApiService.NewCreateStorageConfigurationOptions()
 				createStorageConfigurationOptionsModel.SetConfigName("testString")
 				createStorageConfigurationOptionsModel.SetConfigVersion("testString")
-				createStorageConfigurationOptionsModel.SetLocation("testString")
+				createStorageConfigurationOptionsModel.SetController("testString")
 				createStorageConfigurationOptionsModel.SetSourceBranch("testString")
 				createStorageConfigurationOptionsModel.SetSourceOrg("testString")
 				createStorageConfigurationOptionsModel.SetStorageClassParameters([]map[string]string{make(map[string]string)})
@@ -41282,7 +41282,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				Expect(createStorageConfigurationOptionsModel).ToNot(BeNil())
 				Expect(createStorageConfigurationOptionsModel.ConfigName).To(Equal(core.StringPtr("testString")))
 				Expect(createStorageConfigurationOptionsModel.ConfigVersion).To(Equal(core.StringPtr("testString")))
-				Expect(createStorageConfigurationOptionsModel.Location).To(Equal(core.StringPtr("testString")))
+				Expect(createStorageConfigurationOptionsModel.Controller).To(Equal(core.StringPtr("testString")))
 				Expect(createStorageConfigurationOptionsModel.SourceBranch).To(Equal(core.StringPtr("testString")))
 				Expect(createStorageConfigurationOptionsModel.SourceOrg).To(Equal(core.StringPtr("testString")))
 				Expect(createStorageConfigurationOptionsModel.StorageClassParameters).To(Equal([]map[string]string{make(map[string]string)}))
@@ -43582,7 +43582,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				updateStorageConfigurationOptionsModel := kubernetesServiceApiService.NewUpdateStorageConfigurationOptions()
 				updateStorageConfigurationOptionsModel.SetConfigName("testString")
 				updateStorageConfigurationOptionsModel.SetConfigVersion("testString")
-				updateStorageConfigurationOptionsModel.SetLocation("testString")
+				updateStorageConfigurationOptionsModel.SetController("testString")
 				updateStorageConfigurationOptionsModel.SetSourceBranch("testString")
 				updateStorageConfigurationOptionsModel.SetSourceOrg("testString")
 				updateStorageConfigurationOptionsModel.SetStorageClassParameters([]map[string]string{make(map[string]string)})
@@ -43595,7 +43595,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				Expect(updateStorageConfigurationOptionsModel).ToNot(BeNil())
 				Expect(updateStorageConfigurationOptionsModel.ConfigName).To(Equal(core.StringPtr("testString")))
 				Expect(updateStorageConfigurationOptionsModel.ConfigVersion).To(Equal(core.StringPtr("testString")))
-				Expect(updateStorageConfigurationOptionsModel.Location).To(Equal(core.StringPtr("testString")))
+				Expect(updateStorageConfigurationOptionsModel.Controller).To(Equal(core.StringPtr("testString")))
 				Expect(updateStorageConfigurationOptionsModel.SourceBranch).To(Equal(core.StringPtr("testString")))
 				Expect(updateStorageConfigurationOptionsModel.SourceOrg).To(Equal(core.StringPtr("testString")))
 				Expect(updateStorageConfigurationOptionsModel.StorageClassParameters).To(Equal([]map[string]string{make(map[string]string)}))
