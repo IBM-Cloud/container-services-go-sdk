@@ -11256,7 +11256,7 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateStorageConfigurationWi
 	builder := core.NewRequestBuilder(core.POST)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = kubernetesServiceApi.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(kubernetesServiceApi.Service.Options.URL, `/v2/storage/satellite/createStorageConfiguration`, nil)
+	_, err = builder.ResolveRequestURL(kubernetesServiceApi.Service.Options.URL, `/v2/storage/satellite/createStorageConfigurationByController`, nil)
 	if err != nil {
 		return
 	}
@@ -11279,8 +11279,8 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateStorageConfigurationWi
 	if createStorageConfigurationOptions.ConfigVersion != nil {
 		body["config-version"] = createStorageConfigurationOptions.ConfigVersion
 	}
-	if createStorageConfigurationOptions.Location != nil {
-		body["location"] = createStorageConfigurationOptions.Location
+	if createStorageConfigurationOptions.Controller != nil {
+		body["controller"] = createStorageConfigurationOptions.Controller
 	}
 	if createStorageConfigurationOptions.SourceBranch != nil {
 		body["source-branch"] = createStorageConfigurationOptions.SourceBranch
@@ -11322,6 +11322,7 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateStorageConfigurationWi
 		return
 	}
 	err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalCreateConfigurationData)
+
 	if err != nil {
 		return
 	}
@@ -11697,7 +11698,7 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) GetStorageConfigurationWithC
 	}
 	builder.AddHeader("Accept", "application/json")
 
-	builder.AddQuery("name", fmt.Sprint(*getStorageConfigurationOptions.Name))
+	builder.AddQuery("config-name", fmt.Sprint(*getStorageConfigurationOptions.Name))
 
 	request, err := builder.Build()
 	if err != nil {
@@ -11986,11 +11987,6 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) RemoveStorageConfigurationWi
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalErrorResponse)
-	if err != nil {
-		return
-	}
-	response.Result = result
 
 	return
 }
@@ -12154,7 +12150,7 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) UpdateStorageConfigurationWi
 	builder := core.NewRequestBuilder(core.POST)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = kubernetesServiceApi.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(kubernetesServiceApi.Service.Options.URL, `/v2/storage/satellite/updateStorageConfiguration`, nil)
+	_, err = builder.ResolveRequestURL(kubernetesServiceApi.Service.Options.URL, `/v2/storage/satellite/updateStorageConfigurationByController`, nil)
 	if err != nil {
 		return
 	}
@@ -12177,8 +12173,8 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) UpdateStorageConfigurationWi
 	if updateStorageConfigurationOptions.ConfigVersion != nil {
 		body["config-version"] = updateStorageConfigurationOptions.ConfigVersion
 	}
-	if updateStorageConfigurationOptions.Location != nil {
-		body["location"] = updateStorageConfigurationOptions.Location
+	if updateStorageConfigurationOptions.Controller != nil {
+		body["controller"] = updateStorageConfigurationOptions.Controller
 	}
 	if updateStorageConfigurationOptions.SourceBranch != nil {
 		body["source-branch"] = updateStorageConfigurationOptions.SourceBranch
@@ -12219,11 +12215,6 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) UpdateStorageConfigurationWi
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalErrorResponse)
-	if err != nil {
-		return
-	}
-	response.Result = result
 
 	return
 }
@@ -17780,10 +17771,10 @@ func (options *CleanupMigrationOptions) SetCluster(cluster string) *CleanupMigra
 }
 
 // SetOptions : Allow user to set Options
-// func (options *CleanupMigrationOptions) SetOptions(options []string) *CleanupMigrationOptions {
-// 	options.Options = options
-// 	return options
-// }
+func (options *CleanupMigrationOptions) SetOptions(optionsField []string) *CleanupMigrationOptions {
+	options.Options = optionsField
+	return options
+}
 
 // SetHeaders : Allow user to set Headers
 func (options *CleanupMigrationOptions) SetHeaders(param map[string]string) *CleanupMigrationOptions {
@@ -20723,7 +20714,7 @@ type CreateStorageConfigurationOptions struct {
 
 	ConfigVersion *string
 
-	Location *string
+	Controller *string
 
 	SourceBranch *string
 
@@ -20762,9 +20753,9 @@ func (options *CreateStorageConfigurationOptions) SetConfigVersion(configVersion
 	return options
 }
 
-// SetLocation : Allow user to set Location
-func (options *CreateStorageConfigurationOptions) SetLocation(location string) *CreateStorageConfigurationOptions {
-	options.Location = core.StringPtr(location)
+// SetController : Allow user to set Location
+func (options *CreateStorageConfigurationOptions) SetController(controller string) *CreateStorageConfigurationOptions {
+	options.Controller = core.StringPtr(controller)
 	return options
 }
 
@@ -30960,10 +30951,10 @@ func (options *StartMigrationOptions) SetCluster(cluster string) *StartMigration
 }
 
 // // SetOptions : Allow user to set Options
-// func (options *StartMigrationOptions) SetOptions(options []string) *StartMigrationOptions {
-// 	options.Options = options
-// 	return options
-// }
+func (options *StartMigrationOptions) SetOptions(optionsField []string) *StartMigrationOptions {
+	options.Options = optionsField
+	return options
+}
 
 // SetHeaders : Allow user to set Headers
 func (options *StartMigrationOptions) SetHeaders(param map[string]string) *StartMigrationOptions {
@@ -32625,7 +32616,7 @@ type UpdateStorageConfigurationOptions struct {
 
 	ConfigVersion *string
 
-	Location *string
+	Controller *string
 
 	SourceBranch *string
 
@@ -32664,9 +32655,9 @@ func (options *UpdateStorageConfigurationOptions) SetConfigVersion(configVersion
 	return options
 }
 
-// SetLocation : Allow user to set Location
-func (options *UpdateStorageConfigurationOptions) SetLocation(location string) *UpdateStorageConfigurationOptions {
-	options.Location = core.StringPtr(location)
+// SetController : Allow user to set Location
+func (options *UpdateStorageConfigurationOptions) SetController(controller string) *UpdateStorageConfigurationOptions {
+	options.Controller = core.StringPtr(controller)
 	return options
 }
 
