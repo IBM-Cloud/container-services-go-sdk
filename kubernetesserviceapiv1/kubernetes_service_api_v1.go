@@ -20482,6 +20482,12 @@ type CreateSatelliteLocationOptions struct {
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
+
+	// Custom subnet CIDR to provide private IP addresses for pods.
+	PodSubnet *string
+
+	// Custom subnet CIDR to provide private IP addresses for services.
+	ServiceSubnet *string
 }
 
 // NewCreateSatelliteLocationOptions : Instantiate CreateSatelliteLocationOptions
@@ -20552,6 +20558,18 @@ func (options *CreateSatelliteLocationOptions) SetXAuthResourceGroup(xAuthResour
 // SetHeaders : Allow user to set Headers
 func (options *CreateSatelliteLocationOptions) SetHeaders(param map[string]string) *CreateSatelliteLocationOptions {
 	options.Headers = param
+	return options
+}
+
+// SetPodSubnet : Allow user to set PodSubnet
+func (options *CreateSatelliteLocationOptions) SetPodSubnet(podSubnet string) *CreateSatelliteLocationOptions {
+	options.PodSubnet = core.StringPtr(podSubnet)
+	return options
+}
+
+// SetServiceSubnet : Allow user to set ServiceSubnet
+func (options *CreateSatelliteLocationOptions) SetServiceSubnet(serviceSubnet string) *CreateSatelliteLocationOptions {
+	options.ServiceSubnet = core.StringPtr(serviceSubnet)
 	return options
 }
 
