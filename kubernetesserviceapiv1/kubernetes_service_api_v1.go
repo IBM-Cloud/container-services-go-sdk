@@ -20488,6 +20488,9 @@ type CreateSatelliteLocationOptions struct {
 
 	// Custom subnet CIDR to provide private IP addresses for services.
 	ServiceSubnet *string
+
+	// The method how the node network interface is selected for the internal pod network.
+	PodNetworkInterfaceSelection map[string]string
 }
 
 // NewCreateSatelliteLocationOptions : Instantiate CreateSatelliteLocationOptions
@@ -20570,6 +20573,12 @@ func (options *CreateSatelliteLocationOptions) SetPodSubnet(podSubnet string) *C
 // SetServiceSubnet : Allow user to set ServiceSubnet
 func (options *CreateSatelliteLocationOptions) SetServiceSubnet(serviceSubnet string) *CreateSatelliteLocationOptions {
 	options.ServiceSubnet = core.StringPtr(serviceSubnet)
+	return options
+}
+
+// SetPodNetworkInterfaceSelection : Allow user to set PodNetworkInterfaceSelection
+func (options *CreateSatelliteLocationOptions) SetPodNetworkInterfaceSelection(podNetworkInterfaceSelection map[string]string) *CreateSatelliteLocationOptions {
+	options.PodNetworkInterfaceSelection = podNetworkInterfaceSelection
 	return options
 }
 
