@@ -20216,6 +20216,9 @@ type CreateSatelliteClusterOptions struct {
 
 	// User provided value for single node option.
 	InfrastructureTopology *string
+
+	// The method how the node network interface is selected for the internal pod network.
+    PodNetworkInterfaceSelection map[string]string
 }
 
 // NewCreateSatelliteClusterOptions : Instantiate CreateSatelliteClusterOptions
@@ -20305,6 +20308,13 @@ func (options *CreateSatelliteClusterOptions) SetXAuthResourceGroup(xAuthResourc
 func (options *CreateSatelliteClusterOptions) SetHeaders(param map[string]string) *CreateSatelliteClusterOptions {
 	options.Headers = param
 	return options
+}
+
+
+// SetPodNetworkInterfaceSelection : Allow user to set PodNetworkInterfaceSelection
+func (options *CreateSatelliteClusterOptions) SetPodNetworkInterfaceSelection(podNetworkInterfaceSelection map[string]string) *CreateSatelliteClusterOptions {
+    options.PodNetworkInterfaceSelection = podNetworkInterfaceSelection
+    return options
 }
 
 // CreateSatelliteClusterRemoteOptions : The CreateSatelliteClusterRemote options.
@@ -20483,14 +20493,11 @@ type CreateSatelliteLocationOptions struct {
 	// Allows users to set headers on API requests
 	Headers map[string]string
 
-	// Custom subnet CIDR to provide private IP addresses for pods.
+	// Optional: User provided value for service subnet CIDR to provide private IP addresses for pods.
 	PodSubnet *string
 
-	// Custom subnet CIDR to provide private IP addresses for services.
+	// Optional: User provided value for the pod subnet CIDR to provide private IP addresses for services.
 	ServiceSubnet *string
-
-	// The method how the node network interface is selected for the internal pod network.
-	PodNetworkInterfaceSelection map[string]string
 }
 
 // NewCreateSatelliteLocationOptions : Instantiate CreateSatelliteLocationOptions
@@ -20573,12 +20580,6 @@ func (options *CreateSatelliteLocationOptions) SetPodSubnet(podSubnet string) *C
 // SetServiceSubnet : Allow user to set ServiceSubnet
 func (options *CreateSatelliteLocationOptions) SetServiceSubnet(serviceSubnet string) *CreateSatelliteLocationOptions {
 	options.ServiceSubnet = core.StringPtr(serviceSubnet)
-	return options
-}
-
-// SetPodNetworkInterfaceSelection : Allow user to set PodNetworkInterfaceSelection
-func (options *CreateSatelliteLocationOptions) SetPodNetworkInterfaceSelection(podNetworkInterfaceSelection map[string]string) *CreateSatelliteLocationOptions {
-	options.PodNetworkInterfaceSelection = podNetworkInterfaceSelection
 	return options
 }
 
