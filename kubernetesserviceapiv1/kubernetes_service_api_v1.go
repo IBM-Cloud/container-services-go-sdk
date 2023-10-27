@@ -29,7 +29,7 @@ import (
 	"reflect"
 	"time"
 
-	common "github.com/IBM-Cloud/container-services-go-sdk/common"
+	"github.com/IBM-Cloud/container-services-go-sdk/common"
 	"github.com/IBM/go-sdk-core/v5/core"
 )
 
@@ -9733,6 +9733,9 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateSatelliteClusterWithCo
 	if createSatelliteClusterOptions.Controller != nil {
 		body["controller"] = createSatelliteClusterOptions.Controller
 	}
+	if createSatelliteClusterOptions.DefaultWorkerPoolEntitlement != nil {
+		body["defaultWorkerPoolEntitlement"] = createSatelliteClusterOptions.DefaultWorkerPoolEntitlement
+	}
 	if createSatelliteClusterOptions.KubeVersion != nil {
 		body["kubeVersion"] = createSatelliteClusterOptions.KubeVersion
 	}
@@ -10658,6 +10661,9 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateSatelliteClusterRemote
 	}
 	if createSatelliteClusterRemoteOptions.Controller != nil {
 		body["controller"] = createSatelliteClusterRemoteOptions.Controller
+	}
+	if createSatelliteClusterRemoteOptions.DefaultWorkerPoolEntitlement != nil {
+		body["defaultWorkerPoolEntitlement"] = createSatelliteClusterRemoteOptions.DefaultWorkerPoolEntitlement
 	}
 	if createSatelliteClusterRemoteOptions.KubeVersion != nil {
 		body["kubeVersion"] = createSatelliteClusterRemoteOptions.KubeVersion
@@ -20180,6 +20186,9 @@ type CreateSatelliteClusterOptions struct {
 	// The name or ID of the Satellite location.
 	Controller *string
 
+	// Optional: The entitlement to use in the default worker pool
+	DefaultWorkerPoolEntitlement *string
+
 	// Optional: The OpenShift Container Platform version.
 	KubeVersion *string
 
@@ -20232,6 +20241,12 @@ func (options *CreateSatelliteClusterOptions) SetAdminAgentOptIn(adminAgentOptIn
 // SetController : Allow user to set Controller
 func (options *CreateSatelliteClusterOptions) SetController(controller string) *CreateSatelliteClusterOptions {
 	options.Controller = core.StringPtr(controller)
+	return options
+}
+
+// SetDefaultWorkerPoolEntitlement : Allow user to set DefaultWorkerPoolEntitlement
+func (options *CreateSatelliteClusterOptions) SetDefaultWorkerPoolEntitlement(defaultWorkerPoolEntitlement string) *CreateSatelliteClusterOptions {
+	options.DefaultWorkerPoolEntitlement = core.StringPtr(defaultWorkerPoolEntitlement)
 	return options
 }
 
@@ -20321,6 +20336,9 @@ type CreateSatelliteClusterRemoteOptions struct {
 	// The name or ID of the Satellite location.
 	Controller *string
 
+	// Optional: The entitlement to use in the default worker pool
+	DefaultWorkerPoolEntitlement *string `json:"defaultWorkerPoolEntitlement"`
+
 	// Optional: The OpenShift Container Platform version.
 	KubeVersion *string
 
@@ -20378,6 +20396,12 @@ func (options *CreateSatelliteClusterRemoteOptions) SetAdminAgentOptIn(adminAgen
 // SetController : Allow user to set Controller
 func (options *CreateSatelliteClusterRemoteOptions) SetController(controller string) *CreateSatelliteClusterRemoteOptions {
 	options.Controller = core.StringPtr(controller)
+	return options
+}
+
+// SetDefaultWorkerPoolEntitlement : Allow user to set DefaultWorkerPoolEntitlement
+func (options *CreateSatelliteClusterRemoteOptions) SetDefaultWorkerPoolEntitlement(defaultWorkerPoolEntitlement string) *CreateSatelliteClusterRemoteOptions {
+	options.DefaultWorkerPoolEntitlement = core.StringPtr(defaultWorkerPoolEntitlement)
 	return options
 }
 
