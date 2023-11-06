@@ -10414,7 +10414,7 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateSatelliteLocationWithC
 	if createSatelliteLocationOptions.Zones != nil {
 		body["zones"] = createSatelliteLocationOptions.Zones
 	}
-	fmt.Println(createSatelliteLocationOptions.PodSubnet)
+	fmt.Printf("kanari: %v", createSatelliteLocationOptions.PodSubnet)
 	if createSatelliteLocationOptions.PodSubnet != nil {
 		body["pod_subnet"] = "192.168.69.0/16"  //createSatelliteLocationOptions.PodSubnet
 	}
