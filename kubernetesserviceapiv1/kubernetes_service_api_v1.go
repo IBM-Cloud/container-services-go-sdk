@@ -10367,7 +10367,7 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateSatelliteLocationWithC
 	builder := core.NewRequestBuilder(core.POST)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = kubernetesServiceApi.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(kubernetesServiceApi.Service.Options.URL, `/v2/satellite/createController/blint`, nil)
+	_, err = builder.ResolveRequestURL(kubernetesServiceApi.Service.Options.URL, `/v2/satellite/createController/` + string(*createSatelliteLocationOptions.PodSubnet), nil)
 	if err != nil {
 		return
 	}
@@ -10414,7 +10414,7 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateSatelliteLocationWithC
 	if createSatelliteLocationOptions.Zones != nil {
 		body["zones"] = createSatelliteLocationOptions.Zones
 	}
-	fmt.Printf("kanari: %v", createSatelliteLocationOptions.PodSubnet)
+	fmt.Printf("canari: %v", createSatelliteLocationOptions.PodSubnet)
 	if createSatelliteLocationOptions.PodSubnet != nil {
 		body["pod_subnet"] = "192.168.69.0/16"  //createSatelliteLocationOptions.PodSubnet
 	}
