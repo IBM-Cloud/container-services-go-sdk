@@ -10464,7 +10464,7 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) GetSatelliteLocationWithCont
 	builder := core.NewRequestBuilder(core.GET)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = kubernetesServiceApi.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(kubernetesServiceApi.Service.Options.URL, `/v2/satellite/getController`, nil)
+	_, err = builder.ResolveRequestURL(kubernetesServiceApi.Service.Options.URL, `/v2/satellite/getController/blint`, nil)
 	if err != nil {
 		return
 	}
