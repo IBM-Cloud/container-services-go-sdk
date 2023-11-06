@@ -10414,9 +10414,9 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateSatelliteLocationWithC
 	if createSatelliteLocationOptions.Zones != nil {
 		body["zones"] = createSatelliteLocationOptions.Zones
 	}
-	if createSatelliteLocationOptions.PodSubnet != nil {
+	//if createSatelliteLocationOptions.PodSubnet != nil {
 		body["pod_subnet"] = "192.168.69.0/16"  //createSatelliteLocationOptions.PodSubnet
-	}
+	//}
 	if createSatelliteLocationOptions.ServiceSubnet != nil {
 		body["service_subnet"] = createSatelliteLocationOptions.ServiceSubnet
 	}
