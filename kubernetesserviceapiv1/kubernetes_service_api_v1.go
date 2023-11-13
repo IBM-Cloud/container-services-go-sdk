@@ -10364,6 +10364,9 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateSatelliteLocationWithC
 		return
 	}
 
+	fmt.Println("canari sdk create satellite location before api call")
+	fmt.Println(createSatelliteLocationOptions)
+
 	builder := core.NewRequestBuilder(core.POST)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = kubernetesServiceApi.GetEnableGzipCompression()
@@ -10414,11 +10417,15 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateSatelliteLocationWithC
 	if createSatelliteLocationOptions.Zones != nil {
 		body["zones"] = createSatelliteLocationOptions.Zones
 	}
-	//if createSatelliteLocationOptions.PodSubnet != nil {
-		body["multishiftPodSubnet"] = "192.168.0.0/16" //createSatelliteLocationOptions.PodSubnet
-	//}
+	if createSatelliteLocationOptions.PodSubnet != nil {
+		body["multishiftPodSubnet"] = createSatelliteLocationOptions.PodSubnet
+	} else {
+		fmt.Println("canari sdk podsubnet is nil :/")
+	}
 	if createSatelliteLocationOptions.ServiceSubnet != nil {
 		body["multishiftServiceSubnet"] = createSatelliteLocationOptions.ServiceSubnet
+	} else {
+		fmt.Println("canari sdk servicesubnet is nil :/")
 	}
 	_, err = builder.SetBodyContentJSON(body)
 	if err != nil {
