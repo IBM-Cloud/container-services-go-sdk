@@ -20232,6 +20232,9 @@ type CreateSatelliteClusterOptions struct {
 
 	// The method how the node network interface is selected for the internal pod network.
     PodNetworkInterfaceSelection map[string]string
+
+	// Set IP autodetection to use correct interface for Calico
+	CalicoIPAutodetectionMethods map[string]string
 }
 
 // NewCreateSatelliteClusterOptions : Instantiate CreateSatelliteClusterOptions
@@ -20328,6 +20331,12 @@ func (options *CreateSatelliteClusterOptions) SetHeaders(param map[string]string
 func (options *CreateSatelliteClusterOptions) SetPodNetworkInterfaceSelection(podNetworkInterfaceSelection map[string]string) *CreateSatelliteClusterOptions {
     options.PodNetworkInterfaceSelection = podNetworkInterfaceSelection
     return options
+}
+
+// SetCalicoIPAutodetectionMethods : Set IP autodetection to use correct interface for Calico
+func (options *CreateSatelliteClusterOptions) SetCalicoIPAutodetectionMethods(calicoIPAutodetectionMethods map[string]string) *CreateSatelliteClusterOptions {
+	options.CalicoIPAutodetectionMethods = calicoIPAutodetectionMethods
+	return options
 }
 
 // CreateSatelliteClusterRemoteOptions : The CreateSatelliteClusterRemote options.
