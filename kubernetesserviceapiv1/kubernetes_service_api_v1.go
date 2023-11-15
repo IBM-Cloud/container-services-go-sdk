@@ -9763,6 +9763,9 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateSatelliteClusterWithCo
 	if createSatelliteClusterOptions.InfrastructureTopology != nil {
 		body["infrastructureTopology"] = createSatelliteClusterOptions.InfrastructureTopology
 	}
+	if createSatelliteClusterOptions.CalicoIPAutodetectionMethods != nil {
+		body["calicoIPAutodetection"] = createSatelliteClusterOptions.CalicoIPAutodetectionMethods
+	}
 	_, err = builder.SetBodyContentJSON(body)
 	if err != nil {
 		return
