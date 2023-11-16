@@ -20233,9 +20233,6 @@ type CreateSatelliteClusterOptions struct {
 	// User provided value for single node option.
 	InfrastructureTopology *string
 
-	// The method how the node network interface is selected for the internal pod network.
-    PodNetworkInterfaceSelection map[string]string
-
 	// Set IP autodetection to use correct interface for Calico
 	CalicoIPAutodetectionMethods map[string]string
 }
