@@ -24592,6 +24592,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				attachSatelliteHostOptionsModel.XAuthResourceGroup = core.StringPtr("testString")
 				attachSatelliteHostOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				attachSatelliteHostOptionsModel.OperatingSystem = core.StringPtr("RHCOS")
+				attachSatelliteHostOptionsModel.HostLinkAgentEndpoint = core.StringPtr("testString")
 
 				// Invoke operation with valid options model (positive test)
 				response, operationErr = kubernetesServiceApiService.AttachSatelliteHost(attachSatelliteHostOptionsModel)
@@ -24613,6 +24614,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				attachSatelliteHostOptionsModel.XAuthResourceGroup = core.StringPtr("testString")
 				attachSatelliteHostOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				attachSatelliteHostOptionsModel.OperatingSystem = core.StringPtr("RHCOS")
+				attachSatelliteHostOptionsModel.HostLinkAgentEndpoint = core.StringPtr("testString")
 				// Invoke operation with empty URL (negative test)
 				err := kubernetesServiceApiService.SetServiceURL("")
 				Expect(err).To(BeNil())
@@ -40542,12 +40544,14 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				attachSatelliteHostOptionsModel.SetXAuthResourceGroup("testString")
 				attachSatelliteHostOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				attachSatelliteHostOptionsModel.SetOperatingSystem("RHCOS")
+				attachSatelliteHostOptionsModel.SetHostLinkAgentEndpoint("testString")
 				Expect(attachSatelliteHostOptionsModel).ToNot(BeNil())
 				Expect(attachSatelliteHostOptionsModel.Controller).To(Equal(core.StringPtr("testString")))
 				Expect(attachSatelliteHostOptionsModel.Labels).To(Equal(make(map[string]string)))
 				Expect(attachSatelliteHostOptionsModel.XAuthResourceGroup).To(Equal(core.StringPtr("testString")))
 				Expect(attachSatelliteHostOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 				Expect(attachSatelliteHostOptionsModel.OperatingSystem).To(Equal(core.StringPtr("RHCOS")))
+				Expect(attachSatelliteHostOptionsModel.HostLinkAgentEndpoint).To(Equal(core.StringPtr("testString")))
 			})
 			It(`Invoke NewAutoUpdateMasterOptions successfully`, func() {
 				// Construct an instance of the AutoUpdateMasterOptions model
