@@ -19199,9 +19199,6 @@ type CreateClusterOptions struct {
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
-
-	// Allow user to set which security groups added to their workers
-	ClusterSecurityGroups map[string]string
 }
 
 // NewCreateClusterOptions : Instantiate CreateClusterOptions
@@ -19352,12 +19349,6 @@ func (options *CreateClusterOptions) SetXAuthRefreshToken(xAuthRefreshToken stri
 // SetHeaders : Allow user to set Headers
 func (options *CreateClusterOptions) SetHeaders(param map[string]string) *CreateClusterOptions {
 	options.Headers = param
-	return options
-}
-
-// SetClusterSecurityGroups : Allow user to set which security groups added to their workers
-func (options *CreateClusterOptions) SetClusterSecurityGroups(param map[string]string) *CreateClusterOptions {
-	options.ClusterSecurityGroups = param
 	return options
 }
 
@@ -20353,13 +20344,6 @@ func (options *CreateSatelliteClusterOptions) SetXAuthResourceGroup(xAuthResourc
 func (options *CreateSatelliteClusterOptions) SetHeaders(param map[string]string) *CreateSatelliteClusterOptions {
 	options.Headers = param
 	return options
-}
-
-
-// SetPodNetworkInterfaceSelection : Allow user to set PodNetworkInterfaceSelection
-func (options *CreateSatelliteClusterOptions) SetPodNetworkInterfaceSelection(podNetworkInterfaceSelection map[string]string) *CreateSatelliteClusterOptions {
-    options.PodNetworkInterfaceSelection = podNetworkInterfaceSelection
-    return options
 }
 
 // SetCalicoIPAutodetectionMethods : Set IP autodetection to use correct interface for Calico
