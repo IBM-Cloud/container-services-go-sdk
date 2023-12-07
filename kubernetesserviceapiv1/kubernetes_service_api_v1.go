@@ -9766,6 +9766,9 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateSatelliteClusterWithCo
 	if createSatelliteClusterOptions.InfrastructureTopology != nil {
 		body["infrastructureTopology"] = createSatelliteClusterOptions.InfrastructureTopology
 	}
+	if createSatelliteClusterOptions.CalicoIPAutodetectionMethods != nil {
+		body["calicoIPAutodetection"] = createSatelliteClusterOptions.CalicoIPAutodetectionMethods
+	}
 	_, err = builder.SetBodyContentJSON(body)
 	if err != nil {
 		return
@@ -10419,6 +10422,12 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateSatelliteLocationWithC
 	}
 	if createSatelliteLocationOptions.Zones != nil {
 		body["zones"] = createSatelliteLocationOptions.Zones
+	}
+	if createSatelliteLocationOptions.PodSubnet != nil {
+		body["multishiftPodSubnet"] = createSatelliteLocationOptions.PodSubnet
+	}
+	if createSatelliteLocationOptions.ServiceSubnet != nil {
+		body["multishiftServiceSubnet"] = createSatelliteLocationOptions.ServiceSubnet
 	}
 	_, err = builder.SetBodyContentJSON(body)
 	if err != nil {
@@ -20237,6 +20246,9 @@ type CreateSatelliteClusterOptions struct {
 
 	// User provided value for single node option.
 	InfrastructureTopology *string
+
+	// Set IP autodetection to use correct interface for Calico
+	CalicoIPAutodetectionMethods map[string]string
 }
 
 // NewCreateSatelliteClusterOptions : Instantiate CreateSatelliteClusterOptions
@@ -20331,6 +20343,12 @@ func (options *CreateSatelliteClusterOptions) SetXAuthResourceGroup(xAuthResourc
 // SetHeaders : Allow user to set Headers
 func (options *CreateSatelliteClusterOptions) SetHeaders(param map[string]string) *CreateSatelliteClusterOptions {
 	options.Headers = param
+	return options
+}
+
+// SetCalicoIPAutodetectionMethods : Set IP autodetection to use correct interface for Calico
+func (options *CreateSatelliteClusterOptions) SetCalicoIPAutodetectionMethods(calicoIPAutodetectionMethods map[string]string) *CreateSatelliteClusterOptions {
+	options.CalicoIPAutodetectionMethods = calicoIPAutodetectionMethods
 	return options
 }
 
@@ -20518,6 +20536,12 @@ type CreateSatelliteLocationOptions struct {
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
+
+	// Optional: User provided value for service subnet CIDR to provide private IP addresses for pods.
+	PodSubnet *string
+
+	// Optional: User provided value for the pod subnet CIDR to provide private IP addresses for services.
+	ServiceSubnet *string
 }
 
 // NewCreateSatelliteLocationOptions : Instantiate CreateSatelliteLocationOptions
@@ -20588,6 +20612,18 @@ func (options *CreateSatelliteLocationOptions) SetXAuthResourceGroup(xAuthResour
 // SetHeaders : Allow user to set Headers
 func (options *CreateSatelliteLocationOptions) SetHeaders(param map[string]string) *CreateSatelliteLocationOptions {
 	options.Headers = param
+	return options
+}
+
+// SetPodSubnet : Allow user to set PodSubnet
+func (options *CreateSatelliteLocationOptions) SetPodSubnet(podSubnet string) *CreateSatelliteLocationOptions {
+	options.PodSubnet = core.StringPtr(podSubnet)
+	return options
+}
+
+// SetServiceSubnet : Allow user to set ServiceSubnet
+func (options *CreateSatelliteLocationOptions) SetServiceSubnet(serviceSubnet string) *CreateSatelliteLocationOptions {
+	options.ServiceSubnet = core.StringPtr(serviceSubnet)
 	return options
 }
 
