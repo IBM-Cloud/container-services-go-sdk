@@ -12003,19 +12003,9 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) RemoveAssignmentWithContext(
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	builder.AddHeader("Content-Type", "application/json")
 
-	body := make(map[string]interface{})
-	if removeAssignmentOptions.UUID != nil {
-		body["uuid"] = *removeAssignmentOptions.UUID
-	}
-	if removeAssignmentOptions.Controller != nil {
-		body["controller"] = *removeAssignmentOptions.Controller
-	}
-	_, err = builder.SetBodyContentJSON(body)
-	if err != nil {
-		return
-	}
+	builder.AddQuery("uuid", fmt.Sprint(*removeAssignmentOptions.UUID))
+	builder.AddQuery("controller", fmt.Sprint(*removeAssignmentOptions.Controller))
 
 	request, err := builder.Build()
 	if err != nil {
@@ -12074,6 +12064,9 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) RemoveStorageConfigurationWi
 
 	builder.AddQuery("uuid", fmt.Sprint(*removeStorageConfigurationOptions.UUID))
 	builder.AddQuery("controller", fmt.Sprint(*removeStorageConfigurationOptions.Controller))
+	if removeStorageConfigurationOptions.RemoveAssignments != nil {
+		builder.AddQuery("removeAssignments", fmt.Sprint(*removeStorageConfigurationOptions.RemoveAssignments))
+	}
 
 	request, err := builder.Build()
 	if err != nil {
@@ -29897,6 +29890,7 @@ type RemoveAssignmentOptions struct {
 	// ls`.
 	UUID *string `json:"uuid,omitempty"`
 
+	// The name or ID of the Satellite location. To list the Satellite locations that you have access to, run `ibmcloud sat location ls`
 	Controller *string `json:"controller,omitempty"`
 
 	// Allows users to set headers on API requests
@@ -29913,6 +29907,12 @@ func (*KubernetesServiceApiV1) NewRemoveAssignmentOptions(uuid string) *RemoveAs
 // SetUUID : Allow user to set UUID
 func (options *RemoveAssignmentOptions) SetUUID(uuid string) *RemoveAssignmentOptions {
 	options.UUID = core.StringPtr(uuid)
+	return options
+}
+
+// SetController : Allow user to set the Controller
+func (options *RemoveAssignmentOptions) SetController(controller string) *RemoveAssignmentOptions {
+	options.Controller = core.StringPtr(controller)
 	return options
 }
 
@@ -30380,7 +30380,11 @@ type RemoveStorageConfigurationOptions struct {
 	// configuration UUID, run `ibmcloud sat config get --config=<storage-configuration-name>`.
 	UUID *string `json:"uuid,omitempty"`
 
+	// The name or ID of the Satellite location. To list the Satellite locations that you have access to, run `ibmcloud sat location ls`
 	Controller *string `json:"controller,omitempty"`
+
+	// Specify true to remove the storage configuration along with the associated assignments. If unspecified, the default value is false.
+	RemoveAssignments *bool `json:"removeAssignments,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -30396,6 +30400,18 @@ func (*KubernetesServiceApiV1) NewRemoveStorageConfigurationOptions(uuid string)
 // SetUUID : Allow user to set UUID
 func (options *RemoveStorageConfigurationOptions) SetUUID(uuid string) *RemoveStorageConfigurationOptions {
 	options.UUID = core.StringPtr(uuid)
+	return options
+}
+
+// SetController : Allow user to set the Controller/Location
+func (options *RemoveStorageConfigurationOptions) SetController(controller string) *RemoveStorageConfigurationOptions {
+	options.Controller = core.StringPtr(controller)
+	return options
+}
+
+// SetController : Allow user to set the Controller/Location
+func (options *RemoveStorageConfigurationOptions) SetRemoveAssignments(removeAssignments bool) *RemoveStorageConfigurationOptions {
+	options.RemoveAssignments = core.BoolPtr(removeAssignments)
 	return options
 }
 
