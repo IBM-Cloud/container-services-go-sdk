@@ -12003,8 +12003,19 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) RemoveAssignmentWithContext(
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
 
-	builder.AddQuery("uuid", fmt.Sprint(*removeAssignmentOptions.UUID))
+	body := make(map[string]interface{})
+	if removeAssignmentOptions.UUID != nil {
+		body["uuid"] = *removeAssignmentOptions.UUID
+	}
+	if removeAssignmentOptions.Controller != nil {
+		body["controller"] = *removeAssignmentOptions.Controller
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		return
+	}
 
 	request, err := builder.Build()
 	if err != nil {
@@ -12060,9 +12071,19 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) RemoveStorageConfigurationWi
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
 
-	builder.AddQuery("uuid", fmt.Sprint(*removeStorageConfigurationOptions.UUID))
-
+	body := make(map[string]interface{})
+	if removeStorageConfigurationOptions.UUID != nil {
+		body["uuid"] = *removeStorageConfigurationOptions.UUID
+	}
+	if removeStorageConfigurationOptions.Controller != nil {
+		body["controller"] = *removeStorageConfigurationOptions.Controller
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		return
+	}
 	request, err := builder.Build()
 	if err != nil {
 		return
@@ -29883,7 +29904,9 @@ func UnmarshalRemoteResourcesSearchableData(m map[string]json.RawMessage, result
 type RemoveAssignmentOptions struct {
 	// The UUID of the assignment. To list the assignments that you have access to, run `ibmcloud sat storage assignment
 	// ls`.
-	UUID *string `validate:"required"`
+	UUID *string `json:"uuid,omitempty"`
+
+	Controller *string `json:"controller,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -30364,7 +30387,9 @@ type RemoveStorageConfigurationOptions struct {
 	// The UUID of the storage configuration. To list the storage configurations that you have access to, run `ibmcloud sat
 	// storage config ls`. To view the storage assignments associated with a given storage configuration and the storage
 	// configuration UUID, run `ibmcloud sat config get --config=<storage-configuration-name>`.
-	UUID *string `validate:"required"`
+	UUID *string `json:"uuid,omitempty"`
+
+	Controller *string `json:"controller,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
