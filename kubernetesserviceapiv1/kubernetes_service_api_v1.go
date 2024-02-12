@@ -30409,7 +30409,7 @@ func (options *RemoveStorageConfigurationOptions) SetController(controller strin
 	return options
 }
 
-// SetController : Allow user to set the Controller/Location
+// SetRemoveAssignments : Specify true to remove the storage configuration along with the associated assignments.
 func (options *RemoveStorageConfigurationOptions) SetRemoveAssignments(removeAssignments bool) *RemoveStorageConfigurationOptions {
 	options.RemoveAssignments = core.BoolPtr(removeAssignments)
 	return options
