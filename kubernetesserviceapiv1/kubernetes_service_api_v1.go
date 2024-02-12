@@ -12071,19 +12071,10 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) RemoveStorageConfigurationWi
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	builder.AddHeader("Content-Type", "application/json")
 
-	body := make(map[string]interface{})
-	if removeStorageConfigurationOptions.UUID != nil {
-		body["uuid"] = *removeStorageConfigurationOptions.UUID
-	}
-	if removeStorageConfigurationOptions.Controller != nil {
-		body["controller"] = *removeStorageConfigurationOptions.Controller
-	}
-	_, err = builder.SetBodyContentJSON(body)
-	if err != nil {
-		return
-	}
+	builder.AddQuery("uuid", fmt.Sprint(*removeStorageConfigurationOptions.UUID))
+	builder.AddQuery("controller", fmt.Sprint(*removeStorageConfigurationOptions.Controller))
+
 	request, err := builder.Build()
 	if err != nil {
 		return
