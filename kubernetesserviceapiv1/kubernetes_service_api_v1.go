@@ -11222,6 +11222,9 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateAssignmentWithContext(
 	if createAssignmentOptions.Name != nil {
 		body["name"] = createAssignmentOptions.Name
 	}
+	if createAssignmentOptions.Controller != nil {
+		body["controller"] = createAssignmentOptions.Controller
+	}
 	_, err = builder.SetBodyContentJSON(body)
 	if err != nil {
 		return
