@@ -11222,6 +11222,9 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateAssignmentWithContext(
 	if createAssignmentOptions.Name != nil {
 		body["name"] = createAssignmentOptions.Name
 	}
+	if createAssignmentOptions.Controller != nil {
+		body["controller"] = createAssignmentOptions.Controller
+	}
 	_, err = builder.SetBodyContentJSON(body)
 	if err != nil {
 		return
@@ -12005,6 +12008,7 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) RemoveAssignmentWithContext(
 	builder.AddHeader("Accept", "application/json")
 
 	builder.AddQuery("uuid", fmt.Sprint(*removeAssignmentOptions.UUID))
+	builder.AddQuery("controller", fmt.Sprint(*removeAssignmentOptions.Controller))
 
 	request, err := builder.Build()
 	if err != nil {
@@ -12062,6 +12066,10 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) RemoveStorageConfigurationWi
 	builder.AddHeader("Accept", "application/json")
 
 	builder.AddQuery("uuid", fmt.Sprint(*removeStorageConfigurationOptions.UUID))
+	builder.AddQuery("controller", fmt.Sprint(*removeStorageConfigurationOptions.Controller))
+	if removeStorageConfigurationOptions.RemoveAssignments != nil {
+		builder.AddQuery("removeAssignments", fmt.Sprint(*removeStorageConfigurationOptions.RemoveAssignments))
+	}
 
 	request, err := builder.Build()
 	if err != nil {
@@ -29883,7 +29891,10 @@ func UnmarshalRemoteResourcesSearchableData(m map[string]json.RawMessage, result
 type RemoveAssignmentOptions struct {
 	// The UUID of the assignment. To list the assignments that you have access to, run `ibmcloud sat storage assignment
 	// ls`.
-	UUID *string `validate:"required"`
+	UUID *string `json:"uuid,omitempty"`
+
+	// The name or ID of the Satellite location. To list the Satellite locations that you have access to, run `ibmcloud sat location ls`
+	Controller *string `json:"controller,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -29899,6 +29910,12 @@ func (*KubernetesServiceApiV1) NewRemoveAssignmentOptions(uuid string) *RemoveAs
 // SetUUID : Allow user to set UUID
 func (options *RemoveAssignmentOptions) SetUUID(uuid string) *RemoveAssignmentOptions {
 	options.UUID = core.StringPtr(uuid)
+	return options
+}
+
+// SetController : Allow user to set the Controller
+func (options *RemoveAssignmentOptions) SetController(controller string) *RemoveAssignmentOptions {
+	options.Controller = core.StringPtr(controller)
 	return options
 }
 
@@ -30364,7 +30381,13 @@ type RemoveStorageConfigurationOptions struct {
 	// The UUID of the storage configuration. To list the storage configurations that you have access to, run `ibmcloud sat
 	// storage config ls`. To view the storage assignments associated with a given storage configuration and the storage
 	// configuration UUID, run `ibmcloud sat config get --config=<storage-configuration-name>`.
-	UUID *string `validate:"required"`
+	UUID *string `json:"uuid,omitempty"`
+
+	// The name or ID of the Satellite location. To list the Satellite locations that you have access to, run `ibmcloud sat location ls`
+	Controller *string `json:"controller,omitempty"`
+
+	// Specify true to remove the storage configuration along with the associated assignments. If unspecified, the default value is false.
+	RemoveAssignments *bool `json:"removeAssignments,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -30380,6 +30403,18 @@ func (*KubernetesServiceApiV1) NewRemoveStorageConfigurationOptions(uuid string)
 // SetUUID : Allow user to set UUID
 func (options *RemoveStorageConfigurationOptions) SetUUID(uuid string) *RemoveStorageConfigurationOptions {
 	options.UUID = core.StringPtr(uuid)
+	return options
+}
+
+// SetController : Allow user to set the Controller/Location
+func (options *RemoveStorageConfigurationOptions) SetController(controller string) *RemoveStorageConfigurationOptions {
+	options.Controller = core.StringPtr(controller)
+	return options
+}
+
+// SetRemoveAssignments : Specify true to remove the storage configuration along with the associated assignments.
+func (options *RemoveStorageConfigurationOptions) SetRemoveAssignments(removeAssignments bool) *RemoveStorageConfigurationOptions {
+	options.RemoveAssignments = core.BoolPtr(removeAssignments)
 	return options
 }
 
