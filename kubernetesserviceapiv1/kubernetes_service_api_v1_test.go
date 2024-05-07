@@ -27765,11 +27765,9 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 
 				// Construct an instance of the CreateAssignmentOptions model
 				createAssignmentOptionsModel := new(kubernetesserviceapiv1.CreateAssignmentOptions)
-				createAssignmentOptionsModel.ChannelName = core.StringPtr("testString")
 				createAssignmentOptionsModel.Cluster = core.StringPtr("testString")
 				createAssignmentOptionsModel.Groups = []string{"testString"}
 				createAssignmentOptionsModel.Name = core.StringPtr("testString")
-				createAssignmentOptionsModel.Version = core.StringPtr("testString")
 				createAssignmentOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := kubernetesServiceApiService.CreateAssignment(createAssignmentOptionsModel)
@@ -27837,11 +27835,9 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 
 				// Construct an instance of the CreateAssignmentOptions model
 				createAssignmentOptionsModel := new(kubernetesserviceapiv1.CreateAssignmentOptions)
-				createAssignmentOptionsModel.ChannelName = core.StringPtr("testString")
 				createAssignmentOptionsModel.Cluster = core.StringPtr("testString")
 				createAssignmentOptionsModel.Groups = []string{"testString"}
 				createAssignmentOptionsModel.Name = core.StringPtr("testString")
-				createAssignmentOptionsModel.Version = core.StringPtr("testString")
 				createAssignmentOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -27916,11 +27912,9 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 
 				// Construct an instance of the CreateAssignmentOptions model
 				createAssignmentOptionsModel := new(kubernetesserviceapiv1.CreateAssignmentOptions)
-				createAssignmentOptionsModel.ChannelName = core.StringPtr("testString")
 				createAssignmentOptionsModel.Cluster = core.StringPtr("testString")
 				createAssignmentOptionsModel.Groups = []string{"testString"}
 				createAssignmentOptionsModel.Name = core.StringPtr("testString")
-				createAssignmentOptionsModel.Version = core.StringPtr("testString")
 				createAssignmentOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -27940,11 +27934,9 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 
 				// Construct an instance of the CreateAssignmentOptions model
 				createAssignmentOptionsModel := new(kubernetesserviceapiv1.CreateAssignmentOptions)
-				createAssignmentOptionsModel.ChannelName = core.StringPtr("testString")
 				createAssignmentOptionsModel.Cluster = core.StringPtr("testString")
 				createAssignmentOptionsModel.Groups = []string{"testString"}
 				createAssignmentOptionsModel.Name = core.StringPtr("testString")
-				createAssignmentOptionsModel.Version = core.StringPtr("testString")
 				createAssignmentOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := kubernetesServiceApiService.SetServiceURL("")
@@ -38315,7 +38307,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `[{"addons": [{"name": "Name", "version": "Version"}], "caCertRotationStatus": {"actionCompletedDate": "ActionCompletedDate", "actionTriggerDate": "ActionTriggerDate", "status": "Status"}, "createdDate": "CreatedDate", "crn": "Crn", "datacenter": "Datacenter", "disableAutoUpdate": false, "entitlement": "Entitlement", "etcdPort": "EtcdPort", "features": {"keyProtectEnabled": false, "pullSecretApplied": false}, "id": "ID", "imageSecurityEnabled": true, "ingress": {"hostname": "Hostname", "message": "Message", "secretName": "SecretName", "status": "Status"}, "isPaid": true, "lifecycle": {"masterHealth": "MasterHealth", "masterState": "MasterState", "masterStatus": "MasterStatus", "masterStatusModifiedDate": "MasterStatusModifiedDate", "modifiedDate": "ModifiedDate"}, "location": "Location", "locationZones": ["LocationZones"], "masterKubeVersion": "MasterKubeVersion", "masterURL": "MasterURL", "monitoringURL": "MonitoringURL", "multiAzCapable": true, "name": "Name", "podSubnet": "PodSubnet", "provider": "Provider", "region": "Region", "resourceGroup": "ResourceGroup", "resourceGroupName": "ResourceGroupName", "serviceEndpoints": {"privateServiceEndpointEnabled": false, "privateServiceEndpointURL": "PrivateServiceEndpointURL", "publicServiceEndpointEnabled": true, "publicServiceEndpointURL": "PublicServiceEndpointURL"}, "serviceSubnet": "ServiceSubnet", "state": "State", "status": "Status", "targetVersion": "TargetVersion", "type": "Type", "versionEOS": "VersionEOS", "vlans": [{"id": "ID", "region": "Region", "subnets": [{"cidr": "Cidr", "id": "ID", "ips": ["Ips"], "is_byoip": false, "is_public": true}], "zone": "Zone"}], "workerCount": 11, "workerZones": ["WorkerZones"], "worker_vlans": [{"id": "ID", "properties": {"local_disk_storage_capability": "LocalDiskStorageCapability", "location": "Location", "name": "Name", "note": "Note", "primary_router": "PrimaryRouter", "san_storage_capability": "SanStorageCapability", "subnet_count": 11, "vlan_number": "VlanNumber", "vlan_type": "VlanType"}, "type": "Type"}]}]`)
+					fmt.Fprintf(res, "%s", `{"addons": [{"name": "Name", "version": "Version"}], "caCertRotationStatus": {"actionCompletedDate": "ActionCompletedDate", "actionTriggerDate": "ActionTriggerDate", "status": "Status"}, "createdDate": "CreatedDate", "crn": "Crn", "datacenter": "Datacenter", "disableAutoUpdate": false, "entitlement": "Entitlement", "etcdPort": "EtcdPort", "features": {"keyProtectEnabled": false, "pullSecretApplied": false}, "id": "ID", "imageSecurityEnabled": true, "ingress": {"hostname": "Hostname", "message": "Message", "secretName": "SecretName", "status": "Status"}, "isPaid": true, "lifecycle": {"masterHealth": "MasterHealth", "masterState": "MasterState", "masterStatus": "MasterStatus", "masterStatusModifiedDate": "MasterStatusModifiedDate", "modifiedDate": "ModifiedDate"}, "location": "Location", "locationZones": ["LocationZones"], "masterKubeVersion": "MasterKubeVersion", "masterURL": "MasterURL", "monitoringURL": "MonitoringURL", "multiAzCapable": true, "name": "Name", "podSubnet": "PodSubnet", "provider": "Provider", "region": "Region", "resourceGroup": "ResourceGroup", "resourceGroupName": "ResourceGroupName", "serviceEndpoints": {"privateServiceEndpointEnabled": false, "privateServiceEndpointURL": "PrivateServiceEndpointURL", "publicServiceEndpointEnabled": true, "publicServiceEndpointURL": "PublicServiceEndpointURL"}, "serviceSubnet": "ServiceSubnet", "state": "State", "status": "Status", "targetVersion": "TargetVersion", "type": "Type", "versionEOS": "VersionEOS", "vlans": [{"id": "ID", "region": "Region", "subnets": [{"cidr": "Cidr", "id": "ID", "ips": ["Ips"], "is_byoip": false, "is_public": true}], "zone": "Zone"}], "workerCount": 11, "workerZones": ["WorkerZones"], "worker_vlans": [{"id": "ID", "properties": {"local_disk_storage_capability": "LocalDiskStorageCapability", "location": "Location", "name": "Name", "note": "Note", "primary_router": "PrimaryRouter", "san_storage_capability": "SanStorageCapability", "subnet_count": 11, "vlan_number": "VlanNumber", "vlan_type": "VlanType"}, "type": "Type"}]}`)
 				}))
 			})
 			It(`Invoke VpcGetCluster successfully with retries`, func() {
@@ -38375,7 +38367,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `[{"addons": [{"name": "Name", "version": "Version"}], "caCertRotationStatus": {"actionCompletedDate": "ActionCompletedDate", "actionTriggerDate": "ActionTriggerDate", "status": "Status"}, "createdDate": "CreatedDate", "crn": "Crn", "datacenter": "Datacenter", "disableAutoUpdate": false, "entitlement": "Entitlement", "etcdPort": "EtcdPort", "features": {"keyProtectEnabled": false, "pullSecretApplied": false}, "id": "ID", "imageSecurityEnabled": true, "ingress": {"hostname": "Hostname", "message": "Message", "secretName": "SecretName", "status": "Status"}, "isPaid": true, "lifecycle": {"masterHealth": "MasterHealth", "masterState": "MasterState", "masterStatus": "MasterStatus", "masterStatusModifiedDate": "MasterStatusModifiedDate", "modifiedDate": "ModifiedDate"}, "location": "Location", "locationZones": ["LocationZones"], "masterKubeVersion": "MasterKubeVersion", "masterURL": "MasterURL", "monitoringURL": "MonitoringURL", "multiAzCapable": true, "name": "Name", "podSubnet": "PodSubnet", "provider": "Provider", "region": "Region", "resourceGroup": "ResourceGroup", "resourceGroupName": "ResourceGroupName", "serviceEndpoints": {"privateServiceEndpointEnabled": false, "privateServiceEndpointURL": "PrivateServiceEndpointURL", "publicServiceEndpointEnabled": true, "publicServiceEndpointURL": "PublicServiceEndpointURL"}, "serviceSubnet": "ServiceSubnet", "state": "State", "status": "Status", "targetVersion": "TargetVersion", "type": "Type", "versionEOS": "VersionEOS", "vlans": [{"id": "ID", "region": "Region", "subnets": [{"cidr": "Cidr", "id": "ID", "ips": ["Ips"], "is_byoip": false, "is_public": true}], "zone": "Zone"}], "workerCount": 11, "workerZones": ["WorkerZones"], "worker_vlans": [{"id": "ID", "properties": {"local_disk_storage_capability": "LocalDiskStorageCapability", "location": "Location", "name": "Name", "note": "Note", "primary_router": "PrimaryRouter", "san_storage_capability": "SanStorageCapability", "subnet_count": 11, "vlan_number": "VlanNumber", "vlan_type": "VlanType"}, "type": "Type"}]}]`)
+					fmt.Fprintf(res, "%s", `{"addons": [{"name": "Name", "version": "Version"}], "caCertRotationStatus": {"actionCompletedDate": "ActionCompletedDate", "actionTriggerDate": "ActionTriggerDate", "status": "Status"}, "createdDate": "CreatedDate", "crn": "Crn", "datacenter": "Datacenter", "disableAutoUpdate": false, "entitlement": "Entitlement", "etcdPort": "EtcdPort", "features": {"keyProtectEnabled": false, "pullSecretApplied": false}, "id": "ID", "imageSecurityEnabled": true, "ingress": {"hostname": "Hostname", "message": "Message", "secretName": "SecretName", "status": "Status"}, "isPaid": true, "lifecycle": {"masterHealth": "MasterHealth", "masterState": "MasterState", "masterStatus": "MasterStatus", "masterStatusModifiedDate": "MasterStatusModifiedDate", "modifiedDate": "ModifiedDate"}, "location": "Location", "locationZones": ["LocationZones"], "masterKubeVersion": "MasterKubeVersion", "masterURL": "MasterURL", "monitoringURL": "MonitoringURL", "multiAzCapable": true, "name": "Name", "podSubnet": "PodSubnet", "provider": "Provider", "region": "Region", "resourceGroup": "ResourceGroup", "resourceGroupName": "ResourceGroupName", "serviceEndpoints": {"privateServiceEndpointEnabled": false, "privateServiceEndpointURL": "PrivateServiceEndpointURL", "publicServiceEndpointEnabled": true, "publicServiceEndpointURL": "PublicServiceEndpointURL"}, "serviceSubnet": "ServiceSubnet", "state": "State", "status": "Status", "targetVersion": "TargetVersion", "type": "Type", "versionEOS": "VersionEOS", "vlans": [{"id": "ID", "region": "Region", "subnets": [{"cidr": "Cidr", "id": "ID", "ips": ["Ips"], "is_byoip": false, "is_public": true}], "zone": "Zone"}], "workerCount": 11, "workerZones": ["WorkerZones"], "worker_vlans": [{"id": "ID", "properties": {"local_disk_storage_capability": "LocalDiskStorageCapability", "location": "Location", "name": "Name", "note": "Note", "primary_router": "PrimaryRouter", "san_storage_capability": "SanStorageCapability", "subnet_count": 11, "vlan_number": "VlanNumber", "vlan_type": "VlanType"}, "type": "Type"}]}`)
 				}))
 			})
 			It(`Invoke VpcGetCluster successfully`, func() {
@@ -40778,18 +40770,14 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 			It(`Invoke NewCreateAssignmentOptions successfully`, func() {
 				// Construct an instance of the CreateAssignmentOptions model
 				createAssignmentOptionsModel := kubernetesServiceApiService.NewCreateAssignmentOptions()
-				createAssignmentOptionsModel.SetChannelName("testString")
 				createAssignmentOptionsModel.SetCluster("testString")
 				createAssignmentOptionsModel.SetGroups([]string{"testString"})
 				createAssignmentOptionsModel.SetName("testString")
-				createAssignmentOptionsModel.SetVersion("testString")
 				createAssignmentOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createAssignmentOptionsModel).ToNot(BeNil())
-				Expect(createAssignmentOptionsModel.ChannelName).To(Equal(core.StringPtr("testString")))
 				Expect(createAssignmentOptionsModel.Cluster).To(Equal(core.StringPtr("testString")))
 				Expect(createAssignmentOptionsModel.Groups).To(Equal([]string{"testString"}))
 				Expect(createAssignmentOptionsModel.Name).To(Equal(core.StringPtr("testString")))
-				Expect(createAssignmentOptionsModel.Version).To(Equal(core.StringPtr("testString")))
 				Expect(createAssignmentOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewCreateAttachmentOptions successfully`, func() {
