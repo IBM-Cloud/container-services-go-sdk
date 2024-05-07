@@ -14958,12 +14958,12 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) VpcCreateWorkerPoolZoneWithC
 
 // VpcGetCluster : Get details of a VPC cluster
 // Get details of a VPC cluster.
-func (kubernetesServiceApi *KubernetesServiceApiV1) VpcGetCluster(vpcGetClusterOptions *VpcGetClusterOptions) (result []GetClusterResponse, response *core.DetailedResponse, err error) {
+func (kubernetesServiceApi *KubernetesServiceApiV1) VpcGetCluster(vpcGetClusterOptions *VpcGetClusterOptions) (result *GetClusterResponse, response *core.DetailedResponse, err error) {
 	return kubernetesServiceApi.VpcGetClusterWithContext(context.Background(), vpcGetClusterOptions)
 }
 
 // VpcGetClusterWithContext is an alternate form of the VpcGetCluster method which supports a Context parameter
-func (kubernetesServiceApi *KubernetesServiceApiV1) VpcGetClusterWithContext(ctx context.Context, vpcGetClusterOptions *VpcGetClusterOptions) (result []GetClusterResponse, response *core.DetailedResponse, err error) {
+func (kubernetesServiceApi *KubernetesServiceApiV1) VpcGetClusterWithContext(ctx context.Context, vpcGetClusterOptions *VpcGetClusterOptions) (result *GetClusterResponse, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(vpcGetClusterOptions, "vpcGetClusterOptions cannot be nil")
 	if err != nil {
 		return
@@ -15004,11 +15004,12 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) VpcGetClusterWithContext(ctx
 		return
 	}
 
-	var rawResponse []json.RawMessage
+	var rawResponse map[string]json.RawMessage
 	response, err = kubernetesServiceApi.Service.Request(request, &rawResponse)
 	if err != nil {
 		return
 	}
+
 	err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalGetClusterResponse)
 	if err != nil {
 		return
