@@ -27,11 +27,12 @@ import (
 	"os"
 	"time"
 
-	"github.com/IBM-Cloud/container-services-go-sdk/kubernetesserviceapiv1"
 	"github.com/IBM/go-sdk-core/v5/core"
 	"github.com/go-openapi/strfmt"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
+
+	"github.com/IBM-Cloud/container-services-go-sdk/kubernetesserviceapiv1"
 )
 
 var _ = Describe(`KubernetesServiceApiV1`, func() {
@@ -25168,6 +25169,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				createSatelliteLocationOptionsModel.CoreosEnabled = true
 				createSatelliteLocationOptionsModel.CosConfig = cosBucketModel
 				createSatelliteLocationOptionsModel.CosCredentials = cosAuthorizationModel
+				createSatelliteLocationOptionsModel.Address = core.StringPtr("testString")
 				createSatelliteLocationOptionsModel.Description = core.StringPtr("testString")
 				createSatelliteLocationOptionsModel.Iaas = iaasModel
 				createSatelliteLocationOptionsModel.Location = core.StringPtr("testString")
@@ -25268,6 +25270,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				createSatelliteLocationOptionsModel.CoreosEnabled = true
 				createSatelliteLocationOptionsModel.CosConfig = cosBucketModel
 				createSatelliteLocationOptionsModel.CosCredentials = cosAuthorizationModel
+				createSatelliteLocationOptionsModel.Address = core.StringPtr("testString")
 				createSatelliteLocationOptionsModel.Description = core.StringPtr("testString")
 				createSatelliteLocationOptionsModel.Iaas = iaasModel
 				createSatelliteLocationOptionsModel.Location = core.StringPtr("testString")
@@ -25375,6 +25378,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				createSatelliteLocationOptionsModel.CoreosEnabled = true
 				createSatelliteLocationOptionsModel.CosConfig = cosBucketModel
 				createSatelliteLocationOptionsModel.CosCredentials = cosAuthorizationModel
+				createSatelliteLocationOptionsModel.Address = core.StringPtr("testString")
 				createSatelliteLocationOptionsModel.Description = core.StringPtr("testString")
 				createSatelliteLocationOptionsModel.Iaas = iaasModel
 				createSatelliteLocationOptionsModel.Location = core.StringPtr("testString")
@@ -25425,6 +25429,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				createSatelliteLocationOptionsModel.CoreosEnabled = true
 				createSatelliteLocationOptionsModel.CosConfig = cosBucketModel
 				createSatelliteLocationOptionsModel.CosCredentials = cosAuthorizationModel
+				createSatelliteLocationOptionsModel.Address = core.StringPtr("testString")
 				createSatelliteLocationOptionsModel.Description = core.StringPtr("testString")
 				createSatelliteLocationOptionsModel.Iaas = iaasModel
 				createSatelliteLocationOptionsModel.Location = core.StringPtr("testString")
