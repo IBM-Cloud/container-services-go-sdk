@@ -1,5 +1,5 @@
 /**
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,8 +29,9 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/IBM-Cloud/container-services-go-sdk/common"
 	"github.com/IBM/go-sdk-core/v5/core"
+
+	"github.com/IBM-Cloud/container-services-go-sdk/common"
 )
 
 // KubernetesServiceApiV1 : With IBM Cloud Kubernetes Service, you can deploy highly available apps in containers that
@@ -10408,6 +10409,9 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateSatelliteLocationWithC
 	if createSatelliteLocationOptions.Description != nil {
 		body["description"] = createSatelliteLocationOptions.Description
 	}
+	if createSatelliteLocationOptions.Address != nil {
+		body["address"] = createSatelliteLocationOptions.Address
+	}
 	if createSatelliteLocationOptions.Iaas != nil {
 		body["iaas"] = createSatelliteLocationOptions.Iaas
 	}
@@ -20524,6 +20528,9 @@ type CreateSatelliteLocationOptions struct {
 	// A description of the new Satellite location.
 	Description *string
 
+	// An optional physical address of the new Satellite location which is deployed on premise
+	Address *string
+
 	Iaas *IAAS
 
 	// The IBM Cloud metro from which the Satellite location is managed.
@@ -20579,6 +20586,12 @@ func (options *CreateSatelliteLocationOptions) SetCosCredentials(cosCredentials 
 // SetDescription : Allow user to set Description
 func (options *CreateSatelliteLocationOptions) SetDescription(description string) *CreateSatelliteLocationOptions {
 	options.Description = core.StringPtr(description)
+	return options
+}
+
+// SetAddress : Allow user to set Address
+func (options *CreateSatelliteLocationOptions) SetAddress(address string) *CreateSatelliteLocationOptions {
+	options.Address = core.StringPtr(address)
 	return options
 }
 
