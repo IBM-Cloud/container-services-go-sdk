@@ -41180,7 +41180,6 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				createSatelliteLocationOptionsModel.SetXAuthResourceGroup("testString")
 				createSatelliteLocationOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createSatelliteLocationOptionsModel).ToNot(BeNil())
-				Expect(createSatelliteLocationOptionsModel.CosConfig).To(Equal(true))
 				Expect(createSatelliteLocationOptionsModel.CosConfig).To(Equal(cosBucketModel))
 				Expect(createSatelliteLocationOptionsModel.CosCredentials).To(Equal(cosAuthorizationModel))
 				Expect(createSatelliteLocationOptionsModel.Description).To(Equal(core.StringPtr("testString")))
