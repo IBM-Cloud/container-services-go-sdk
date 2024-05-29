@@ -10412,6 +10412,9 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateSatelliteLocationWithC
 	if createSatelliteLocationOptions.Address != nil {
 		body["address"] = createSatelliteLocationOptions.Address
 	}
+	if createSatelliteLocationOptions.Capabilities != nil {
+		body["capabilities"] = createSatelliteLocationOptions.Capabilities
+	}
 	if createSatelliteLocationOptions.Iaas != nil {
 		body["iaas"] = createSatelliteLocationOptions.Iaas
 	}
@@ -17341,6 +17344,15 @@ func UnmarshalBoundService(m map[string]json.RawMessage, result interface{}) (er
 	return
 }
 
+// SatelliteCapability is a custom type for satellite capabilities
+type SatelliteCapability string
+
+// Supported satellite capabilities
+const (
+	//OnPrem indicates that the location is on the premises of the customer
+	OnPrem SatelliteCapability = "on-prem"
+)
+
 // COSAuthorization : COSAuthorization Optional: IBM Cloud Object Storage authorization keys.
 type COSAuthorization struct {
 	// The HMAC secret access key ID.
@@ -20531,6 +20543,9 @@ type CreateSatelliteLocationOptions struct {
 	// An optional physical address of the new Satellite location which is deployed on premise
 	Address *string
 
+	//Satellite capabilities attached to the satellite location
+	Capabilities []SatelliteCapability
+
 	Iaas *IAAS
 
 	// The IBM Cloud metro from which the Satellite location is managed.
@@ -20592,6 +20607,12 @@ func (options *CreateSatelliteLocationOptions) SetDescription(description string
 // SetAddress : Allow user to set Address
 func (options *CreateSatelliteLocationOptions) SetAddress(address string) *CreateSatelliteLocationOptions {
 	options.Address = core.StringPtr(address)
+	return options
+}
+
+// SetCapabilities : Allow user to set Capabilities
+func (options *CreateSatelliteLocationOptions) SetCapabilities(capabilities []SatelliteCapability) *CreateSatelliteLocationOptions {
+	options.Capabilities = capabilities
 	return options
 }
 
