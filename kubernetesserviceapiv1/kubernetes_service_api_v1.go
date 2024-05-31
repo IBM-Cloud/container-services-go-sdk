@@ -10409,8 +10409,8 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateSatelliteLocationWithC
 	if createSatelliteLocationOptions.Description != nil {
 		body["description"] = createSatelliteLocationOptions.Description
 	}
-	if createSatelliteLocationOptions.Address != nil {
-		body["address"] = createSatelliteLocationOptions.Address
+	if createSatelliteLocationOptions.PhysicalAddress != nil {
+		body["address"] = createSatelliteLocationOptions.PhysicalAddress
 	}
 	if createSatelliteLocationOptions.Capabilities != nil {
 		body["capabilities"] = createSatelliteLocationOptions.Capabilities
@@ -20541,7 +20541,7 @@ type CreateSatelliteLocationOptions struct {
 	Description *string
 
 	// An optional physical address of the new Satellite location which is deployed on premise
-	Address *string
+	PhysicalAddress *string
 
 	//Satellite capabilities attached to the satellite location
 	Capabilities []SatelliteCapability
@@ -20604,9 +20604,9 @@ func (options *CreateSatelliteLocationOptions) SetDescription(description string
 	return options
 }
 
-// SetAddress : Allow user to set Address
-func (options *CreateSatelliteLocationOptions) SetAddress(address string) *CreateSatelliteLocationOptions {
-	options.Address = core.StringPtr(address)
+// SetPhysicalAddress : Allow user to set PhysicalAddress
+func (options *CreateSatelliteLocationOptions) SetPhysicalAddress(physicalAddress string) *CreateSatelliteLocationOptions {
+	options.PhysicalAddress = core.StringPtr(physicalAddress)
 	return options
 }
 
@@ -28316,6 +28316,9 @@ type MultishiftController struct {
 	// Deployments reports status of deployments on the IBM Cloud Satellite location.
 	Deployments *Deployments `json:"deployments,omitempty"`
 
+	// An optional physical address of the new Satellite location which is deployed on premise
+	PhysicalAddress *string `json:"physicalAddress,omitempty"`
+
 	// Hosts lists the hosts belonging to the IBM Cloud Satellite location.
 	Hosts *Hosts `json:"hosts,omitempty"`
 
@@ -28358,6 +28361,10 @@ func UnmarshalMultishiftController(m map[string]json.RawMessage, result interfac
 		return
 	}
 	err = core.UnmarshalModel(m, "deployments", &obj.Deployments, UnmarshalDeployments)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "physicalAddress", &obj.PhysicalAddress)
 	if err != nil {
 		return
 	}
@@ -28489,6 +28496,9 @@ type MultishiftGetController struct {
 
 	Description *string `json:"description,omitempty"`
 
+	// An optional physical address of the new Satellite location which is deployed on premise
+	PhysicalAddress *string `json:"physicalAddress,omitempty"`
+
 	DisableAutoUpdate *bool `json:"disableAutoUpdate,omitempty"`
 
 	Entitlement *string `json:"entitlement,omitempty"`
@@ -28590,6 +28600,10 @@ func UnmarshalMultishiftGetController(m map[string]json.RawMessage, result inter
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "physicalAddress", &obj.PhysicalAddress)
 	if err != nil {
 		return
 	}
