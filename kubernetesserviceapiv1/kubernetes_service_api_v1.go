@@ -28316,8 +28316,8 @@ type MultishiftController struct {
 	// Deployments reports status of deployments on the IBM Cloud Satellite location.
 	Deployments *Deployments `json:"deployments,omitempty"`
 
-	// An optional physical address of the new Satellite location which is deployed on premise
-	PhysicalAddress *string `json:"physicalAddress,omitempty"`
+	//Satellite capabilities attached to the satellite location
+	Capabilities []SatelliteCapability
 
 	// Hosts lists the hosts belonging to the IBM Cloud Satellite location.
 	Hosts *Hosts `json:"hosts,omitempty"`
@@ -28364,7 +28364,7 @@ func UnmarshalMultishiftController(m map[string]json.RawMessage, result interfac
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "physicalAddress", &obj.PhysicalAddress)
+	err = core.UnmarshalPrimitive(m, "capabilities", &obj.Capabilities)
 	if err != nil {
 		return
 	}
@@ -28499,6 +28499,9 @@ type MultishiftGetController struct {
 	// An optional physical address of the new Satellite location which is deployed on premise
 	PhysicalAddress *string `json:"physicalAddress,omitempty"`
 
+	//Satellite capabilities attached to the satellite location
+	Capabilities []SatelliteCapability
+
 	DisableAutoUpdate *bool `json:"disableAutoUpdate,omitempty"`
 
 	Entitlement *string `json:"entitlement,omitempty"`
@@ -28596,6 +28599,10 @@ func UnmarshalMultishiftGetController(m map[string]json.RawMessage, result inter
 		return
 	}
 	err = core.UnmarshalModel(m, "deployments", &obj.Deployments, UnmarshalDeployments)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "capabilities", &obj.Capabilities)
 	if err != nil {
 		return
 	}
