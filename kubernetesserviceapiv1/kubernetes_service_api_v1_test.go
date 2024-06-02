@@ -25143,9 +25143,6 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(kubernetesServiceApiService).ToNot(BeNil())
 
-				//Construct an instance of Satellite Capability
-				satelliteCapability := new(kubernetesserviceapiv1.SatelliteCapability.OnPrem)
-
 				// Construct an instance of the COSBucketServiceInstance model
 				cosBucketServiceInstanceModel := new(kubernetesserviceapiv1.COSBucketServiceInstance)
 				cosBucketServiceInstanceModel.Crn = core.StringPtr("testString")
@@ -25174,7 +25171,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				createSatelliteLocationOptionsModel.CosCredentials = cosAuthorizationModel
 				createSatelliteLocationOptionsModel.PhysicalAddress = core.StringPtr("testString")
 				createSatelliteLocationOptionsModel.Description = core.StringPtr("testString")
-				createSatelliteLocationOptionsModel.Capabilities = []kubernetesserviceapiv1.SatelliteCapability{satelliteCapability}
+				createSatelliteLocationOptionsModel.Capabilities = []kubernetesserviceapiv1.SatelliteCapability{kubernetesserviceapiv1.OnPrem}
 				createSatelliteLocationOptionsModel.Iaas = iaasModel
 				createSatelliteLocationOptionsModel.Location = core.StringPtr("testString")
 				createSatelliteLocationOptionsModel.LoggingAccountID = core.StringPtr("testString")
@@ -25276,6 +25273,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				createSatelliteLocationOptionsModel.CosCredentials = cosAuthorizationModel
 				createSatelliteLocationOptionsModel.PhysicalAddress = core.StringPtr("testString")
 				createSatelliteLocationOptionsModel.Description = core.StringPtr("testString")
+				createSatelliteLocationOptionsModel.Capabilities = []kubernetesserviceapiv1.SatelliteCapability{kubernetesserviceapiv1.OnPrem}
 				createSatelliteLocationOptionsModel.Iaas = iaasModel
 				createSatelliteLocationOptionsModel.Location = core.StringPtr("testString")
 				createSatelliteLocationOptionsModel.LoggingAccountID = core.StringPtr("testString")
@@ -25384,6 +25382,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				createSatelliteLocationOptionsModel.CosCredentials = cosAuthorizationModel
 				createSatelliteLocationOptionsModel.PhysicalAddress = core.StringPtr("testString")
 				createSatelliteLocationOptionsModel.Description = core.StringPtr("testString")
+				createSatelliteLocationOptionsModel.Capabilities = []kubernetesserviceapiv1.SatelliteCapability{kubernetesserviceapiv1.OnPrem}
 				createSatelliteLocationOptionsModel.Iaas = iaasModel
 				createSatelliteLocationOptionsModel.Location = core.StringPtr("testString")
 				createSatelliteLocationOptionsModel.LoggingAccountID = core.StringPtr("testString")
@@ -25435,6 +25434,7 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				createSatelliteLocationOptionsModel.CosCredentials = cosAuthorizationModel
 				createSatelliteLocationOptionsModel.PhysicalAddress = core.StringPtr("testString")
 				createSatelliteLocationOptionsModel.Description = core.StringPtr("testString")
+				createSatelliteLocationOptionsModel.Capabilities = []kubernetesserviceapiv1.SatelliteCapability{kubernetesserviceapiv1.OnPrem}
 				createSatelliteLocationOptionsModel.Iaas = iaasModel
 				createSatelliteLocationOptionsModel.Location = core.StringPtr("testString")
 				createSatelliteLocationOptionsModel.LoggingAccountID = core.StringPtr("testString")
