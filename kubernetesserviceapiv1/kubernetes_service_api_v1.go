@@ -10410,7 +10410,7 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateSatelliteLocationWithC
 		body["description"] = createSatelliteLocationOptions.Description
 	}
 	if createSatelliteLocationOptions.PhysicalAddress != nil {
-		body["address"] = createSatelliteLocationOptions.PhysicalAddress
+		body["physicalAddress"] = createSatelliteLocationOptions.PhysicalAddress
 	}
 	if createSatelliteLocationOptions.Capabilities != nil {
 		body["capabilities"] = createSatelliteLocationOptions.Capabilities
