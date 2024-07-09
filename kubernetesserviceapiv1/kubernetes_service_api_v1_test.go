@@ -1,5 +1,5 @@
 /**
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,11 +27,12 @@ import (
 	"os"
 	"time"
 
-	"github.com/IBM-Cloud/container-services-go-sdk/kubernetesserviceapiv1"
 	"github.com/IBM/go-sdk-core/v5/core"
 	"github.com/go-openapi/strfmt"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
+
+	"github.com/IBM-Cloud/container-services-go-sdk/kubernetesserviceapiv1"
 )
 
 var _ = Describe(`KubernetesServiceApiV1`, func() {
@@ -25168,7 +25169,9 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				createSatelliteLocationOptionsModel.CoreosEnabled = true
 				createSatelliteLocationOptionsModel.CosConfig = cosBucketModel
 				createSatelliteLocationOptionsModel.CosCredentials = cosAuthorizationModel
+				createSatelliteLocationOptionsModel.PhysicalAddress = core.StringPtr("testString")
 				createSatelliteLocationOptionsModel.Description = core.StringPtr("testString")
+				createSatelliteLocationOptionsModel.CapabilitiesManagedBySatellite = []kubernetesserviceapiv1.CapabilityManagedBySatellite{kubernetesserviceapiv1.OnPrem}
 				createSatelliteLocationOptionsModel.Iaas = iaasModel
 				createSatelliteLocationOptionsModel.Location = core.StringPtr("testString")
 				createSatelliteLocationOptionsModel.LoggingAccountID = core.StringPtr("testString")
@@ -25268,7 +25271,9 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				createSatelliteLocationOptionsModel.CoreosEnabled = true
 				createSatelliteLocationOptionsModel.CosConfig = cosBucketModel
 				createSatelliteLocationOptionsModel.CosCredentials = cosAuthorizationModel
+				createSatelliteLocationOptionsModel.PhysicalAddress = core.StringPtr("testString")
 				createSatelliteLocationOptionsModel.Description = core.StringPtr("testString")
+				createSatelliteLocationOptionsModel.CapabilitiesManagedBySatellite = []kubernetesserviceapiv1.CapabilityManagedBySatellite{kubernetesserviceapiv1.OnPrem}
 				createSatelliteLocationOptionsModel.Iaas = iaasModel
 				createSatelliteLocationOptionsModel.Location = core.StringPtr("testString")
 				createSatelliteLocationOptionsModel.LoggingAccountID = core.StringPtr("testString")
@@ -25375,7 +25380,9 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				createSatelliteLocationOptionsModel.CoreosEnabled = true
 				createSatelliteLocationOptionsModel.CosConfig = cosBucketModel
 				createSatelliteLocationOptionsModel.CosCredentials = cosAuthorizationModel
+				createSatelliteLocationOptionsModel.PhysicalAddress = core.StringPtr("testString")
 				createSatelliteLocationOptionsModel.Description = core.StringPtr("testString")
+				createSatelliteLocationOptionsModel.CapabilitiesManagedBySatellite = []kubernetesserviceapiv1.CapabilityManagedBySatellite{kubernetesserviceapiv1.OnPrem}
 				createSatelliteLocationOptionsModel.Iaas = iaasModel
 				createSatelliteLocationOptionsModel.Location = core.StringPtr("testString")
 				createSatelliteLocationOptionsModel.LoggingAccountID = core.StringPtr("testString")
@@ -25425,7 +25432,9 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				createSatelliteLocationOptionsModel.CoreosEnabled = true
 				createSatelliteLocationOptionsModel.CosConfig = cosBucketModel
 				createSatelliteLocationOptionsModel.CosCredentials = cosAuthorizationModel
+				createSatelliteLocationOptionsModel.PhysicalAddress = core.StringPtr("testString")
 				createSatelliteLocationOptionsModel.Description = core.StringPtr("testString")
+				createSatelliteLocationOptionsModel.CapabilitiesManagedBySatellite = []kubernetesserviceapiv1.CapabilityManagedBySatellite{kubernetesserviceapiv1.OnPrem}
 				createSatelliteLocationOptionsModel.Iaas = iaasModel
 				createSatelliteLocationOptionsModel.Location = core.StringPtr("testString")
 				createSatelliteLocationOptionsModel.LoggingAccountID = core.StringPtr("testString")
@@ -41175,7 +41184,6 @@ var _ = Describe(`KubernetesServiceApiV1`, func() {
 				createSatelliteLocationOptionsModel.SetXAuthResourceGroup("testString")
 				createSatelliteLocationOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createSatelliteLocationOptionsModel).ToNot(BeNil())
-				Expect(createSatelliteLocationOptionsModel.CosConfig).To(Equal(true))
 				Expect(createSatelliteLocationOptionsModel.CosConfig).To(Equal(cosBucketModel))
 				Expect(createSatelliteLocationOptionsModel.CosCredentials).To(Equal(cosAuthorizationModel))
 				Expect(createSatelliteLocationOptionsModel.Description).To(Equal(core.StringPtr("testString")))
