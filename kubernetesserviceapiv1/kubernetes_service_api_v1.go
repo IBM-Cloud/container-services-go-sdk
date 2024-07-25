@@ -1,5 +1,5 @@
 /**
- * (C) Copyright IBM Corp. 2021.
+ * (C) Copyright IBM Corp. 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,8 +29,9 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/IBM-Cloud/container-services-go-sdk/common"
 	"github.com/IBM/go-sdk-core/v5/core"
+
+	"github.com/IBM-Cloud/container-services-go-sdk/common"
 )
 
 // KubernetesServiceApiV1 : With IBM Cloud Kubernetes Service, you can deploy highly available apps in containers that
@@ -10408,6 +10409,12 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateSatelliteLocationWithC
 	if createSatelliteLocationOptions.Description != nil {
 		body["description"] = createSatelliteLocationOptions.Description
 	}
+	if createSatelliteLocationOptions.PhysicalAddress != nil {
+		body["physicalAddress"] = createSatelliteLocationOptions.PhysicalAddress
+	}
+	if createSatelliteLocationOptions.CapabilitiesManagedBySatellite != nil {
+		body["capabilitiesManagedBySatellite"] = createSatelliteLocationOptions.CapabilitiesManagedBySatellite
+	}
 	if createSatelliteLocationOptions.Iaas != nil {
 		body["iaas"] = createSatelliteLocationOptions.Iaas
 	}
@@ -17337,6 +17344,15 @@ func UnmarshalBoundService(m map[string]json.RawMessage, result interface{}) (er
 	return
 }
 
+// CapabilityManagedBySatellite is a custom type for satellite capabilities
+type CapabilityManagedBySatellite string
+
+// Supported satellite capabilities
+const (
+	//OnPrem indicates that the location is on the premises of the customer
+	OnPrem CapabilityManagedBySatellite = "on-prem"
+)
+
 // COSAuthorization : COSAuthorization Optional: IBM Cloud Object Storage authorization keys.
 type COSAuthorization struct {
 	// The HMAC secret access key ID.
@@ -20524,6 +20540,12 @@ type CreateSatelliteLocationOptions struct {
 	// A description of the new Satellite location.
 	Description *string
 
+	// An optional physical address of the new Satellite location which is deployed on premise
+	PhysicalAddress *string
+
+	//Satellite capabilities attached to the satellite location
+	CapabilitiesManagedBySatellite []CapabilityManagedBySatellite
+
 	Iaas *IAAS
 
 	// The IBM Cloud metro from which the Satellite location is managed.
@@ -20579,6 +20601,18 @@ func (options *CreateSatelliteLocationOptions) SetCosCredentials(cosCredentials 
 // SetDescription : Allow user to set Description
 func (options *CreateSatelliteLocationOptions) SetDescription(description string) *CreateSatelliteLocationOptions {
 	options.Description = core.StringPtr(description)
+	return options
+}
+
+// SetPhysicalAddress : Allow user to set PhysicalAddress
+func (options *CreateSatelliteLocationOptions) SetPhysicalAddress(physicalAddress string) *CreateSatelliteLocationOptions {
+	options.PhysicalAddress = core.StringPtr(physicalAddress)
+	return options
+}
+
+// SetCapabilitiesManagedBySatellite : Allow user to set CapabilitiesManagedBySatellite
+func (options *CreateSatelliteLocationOptions) SetCapabilities(capabilitiesManagedBySatellite []CapabilityManagedBySatellite) *CreateSatelliteLocationOptions {
+	options.CapabilitiesManagedBySatellite = capabilitiesManagedBySatellite
 	return options
 }
 
@@ -28282,6 +28316,9 @@ type MultishiftController struct {
 	// Deployments reports status of deployments on the IBM Cloud Satellite location.
 	Deployments *Deployments `json:"deployments,omitempty"`
 
+	//CapabilitiesManagedBySatellite attached to the satellite location
+	CapabilitiesManagedBySatellite []CapabilityManagedBySatellite
+
 	// Hosts lists the hosts belonging to the IBM Cloud Satellite location.
 	Hosts *Hosts `json:"hosts,omitempty"`
 
@@ -28324,6 +28361,10 @@ func UnmarshalMultishiftController(m map[string]json.RawMessage, result interfac
 		return
 	}
 	err = core.UnmarshalModel(m, "deployments", &obj.Deployments, UnmarshalDeployments)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "capabilitiesManagedBySatellite", &obj.CapabilitiesManagedBySatellite)
 	if err != nil {
 		return
 	}
@@ -28455,6 +28496,12 @@ type MultishiftGetController struct {
 
 	Description *string `json:"description,omitempty"`
 
+	// An optional physical address of the new Satellite location which is deployed on premise
+	PhysicalAddress *string `json:"physicalAddress,omitempty"`
+
+	//Satellite capabilities attached to the satellite location
+	CapabilitiesManagedBySatellite []CapabilityManagedBySatellite
+
 	DisableAutoUpdate *bool `json:"disableAutoUpdate,omitempty"`
 
 	Entitlement *string `json:"entitlement,omitempty"`
@@ -28555,7 +28602,15 @@ func UnmarshalMultishiftGetController(m map[string]json.RawMessage, result inter
 	if err != nil {
 		return
 	}
+	err = core.UnmarshalPrimitive(m, "capabilitiesManagedBySatellite", &obj.CapabilitiesManagedBySatellite)
+	if err != nil {
+		return
+	}
 	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "physicalAddress", &obj.PhysicalAddress)
 	if err != nil {
 		return
 	}
