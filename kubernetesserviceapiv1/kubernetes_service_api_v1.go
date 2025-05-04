@@ -24,6 +24,7 @@ package kubernetesserviceapiv1
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"net/http"
 	"reflect"
@@ -9794,6 +9795,153 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) RemoveSatelliteLocationWithC
 
 	return
 }
+
+// UpdateSatelliteLocationOptions : The UpdateSatelliteLocationOptions options.
+type UpdateSatelliteLocationOptions struct {
+
+	// The ID of the Satellite location.
+	ID *string `json:"id,omitempty"`
+
+	// The name of the Satellite location.
+	Name *string `json:"name,omitempty"`
+
+	// The description of the Satellite location.
+	Description *string `json:"description,omitempty"`
+}
+
+// GraphQLRequest is the JSON request body for a GraphQL HTTP API call
+type GraphQLRequest struct {
+	Query         string         `json:"query"`
+	OperationName string         `json:"operationName,omitempty"`
+	Variables     map[string]any `json:"variables,omitempty"`
+}
+
+// GraphQLResponse is the JSON response body for a GraphQL HTTP API call
+type GraphQLResponse struct {
+	Errors     *GraphQLErrors   `json:"errors,omitempty"`
+	Data       *json.RawMessage `json:"data,omitempty"`
+	Extensions map[string]any   `json:"extensions,omitempty"`
+}
+
+type UpdateSatelliteLocationInput struct {
+	ID          string  `json:"id"`
+	Name        *string `json:"name"`
+	Description *string `json:"description"`
+}
+
+type UpdateSatelliteLocationData struct {
+	UpdateSatelliteLocation UpdateSatelliteLocationPayload `json:"updateSatelliteLocation"`
+}
+
+type UpdateSatelliteLocationPayload struct {
+	SatelliteLocation *SatelliteLocation `json:"satelliteLocation"`
+}
+
+type SatelliteLocation struct {
+	ID          string `json:"id"`
+	Name        string `json:"name"`
+	Description string `json:"description"`
+}
+
+type GraphQLErrors []*GraphQLError
+
+// Error is a GraphQL response error
+type GraphQLError struct {
+	Message    string         `json:"message"`
+	Path       []any          `json:"path,omitempty"`
+	Extensions map[string]any `json:"extensions,omitempty"`
+}
+
+// UpdateSatelliteLocation : Update an IBM Cloud Satellite Location
+// Update an IBM Cloud Satellite location.
+func (kubernetesServiceApi *KubernetesServiceApiV1) UpdateSatelliteLocation(updateSatelliteLocationOptions *UpdateSatelliteLocationOptions) (result UpdateSatelliteLocationPayload, response *core.DetailedResponse, err error) {
+	return kubernetesServiceApi.UpdateSatelliteLocationWithContext(context.Background(), updateSatelliteLocationOptions)
+}
+
+// UpdateSatelliteLocationWithContext is an alternate form of the UpdateSatelliteLocation method which supports a Context parameter
+func (kubernetesServiceApi *KubernetesServiceApiV1) UpdateSatelliteLocationWithContext(ctx context.Context, updateSatelliteLocationOptions *UpdateSatelliteLocationOptions) (result UpdateSatelliteLocationPayload, response *core.DetailedResponse, err error) {
+	err = core.ValidateStruct(updateSatelliteLocationOptions, "updateSatelliteLocationOptions")
+	if err != nil {
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = kubernetesServiceApi.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(kubernetesServiceApi.Service.Options.URL, `/unsafe/graphql`, nil)
+	if err != nil {
+		return
+	}
+
+	sdkHeaders := common.GetSdkHeaders("kubernetes_service_api", "V1", "UpdateSatelliteLocation")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := GraphQLRequest{
+		Query: `
+			mutation($input: UpdateSatelliteLocationInput!) {
+				updateSatelliteLocation(input: $input) {
+					satelliteLocation {
+						id
+						name
+						description
+					} 
+				} 
+			}
+		`,
+		Variables: map[string]interface{}{
+			"input": UpdateSatelliteLocationInput{
+				ID:          *updateSatelliteLocationOptions.ID,
+				Name:        updateSatelliteLocationOptions.Name,
+				Description: updateSatelliteLocationOptions.Description,
+			},
+		},
+	}
+
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		return
+	}
+
+	var graphQLResponse GraphQLResponse
+	response, err = kubernetesServiceApi.Service.Request(request, &graphQLResponse)
+	if err != nil {
+		return
+	}
+
+	//handle graphQL embedded error
+	if graphQLResponse.Errors != nil {
+		var graphQLErrors []error
+		for _, graphQLErr := range *graphQLResponse.Errors {
+			graphQLErrors = append(graphQLErrors, errors.New(graphQLErr.Message + "(" + graphQLErr.Extensions["trace"].(string) + ")"))
+		}
+		err = errors.Join(graphQLErrors...)
+		return
+	}
+
+	//handle graphQL response 'data'
+	var data json.RawMessage
+	var updateSatelliteLocationData UpdateSatelliteLocationData
+	if graphQLResponse.Data != nil {
+		data = *graphQLResponse.Data
+		err = json.Unmarshal(data, &updateSatelliteLocationData)
+		if err != nil {
+			return
+		}
+		result = updateSatelliteLocationData.UpdateSatelliteLocation
+	}
+	response.Result = result
+
+	return
+}
+
 
 // CreateSatelliteClusterRemote : Create an IBM Cloud Satellite cluster in a location that does not belong to your account
 // Create an OpenShift Container Platform cluster in an IBM Cloud Satellite location that belongs to another account.
